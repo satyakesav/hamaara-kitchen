@@ -92,7 +92,7 @@ export default function Home() {
             One India, Many Cultures, One Table
           </p>
           <p className="text-gray-400 mb-10 text-lg">
-            Authentic South Indian cuisine in Santa Clara, CA
+            A culinary journey across India, right here in Santa Clara, CA
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -113,20 +113,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-[#C8A84B]/50">
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
       </section>
-
-      {/* ── Pattern Border ── */}
-      <div className="pattern-border" />
 
       {/* ── Tagline Banner ── */}
       <section className="bg-[#C8A84B] py-5 px-4 text-center">
         <p className="text-[#1E1829] font-semibold text-sm sm:text-base tracking-[0.2em] uppercase">
-          Authentic · Homestyle · Soulful · South Indian Cuisine
+          Authentic · Homestyle · Soulful · Indian Cuisine
         </p>
       </section>
 

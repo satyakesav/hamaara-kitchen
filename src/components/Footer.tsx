@@ -74,9 +74,6 @@ export default function Footer() {
             <div className="text-sm text-gray-400 space-y-1.5">
               {/* TODO: Update opening hours */}
               <p className="text-gray-500 italic">Hours coming soon</p>
-              <p className="text-xs text-gray-600">
-                (See PENDING.md to add hours)
-              </p>
             </div>
           </div>
 
