@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8F5EE;
+  --foreground: #1E1829;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-dark: #1E1829;
+  --color-darker: #141220;
+  --color-section-dark: #2A2040;
+  --color-gold: #C8A84B;
+  --color-gold-light: #E5C96B;
+  --color-cream: #F8F5EE;
+  --color-card: #FFFFFF;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1E1829;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8A84B;
+  border-radius: 3px;
+}
+
+/* Gold divider utility */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: #C8A84B;
+  margin: 12px auto;
+}
+
+/* Signature badge */
+.badge-signature {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #C8A84B;
+  color: #1E1829;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* Decorative border pattern */
+.pattern-border {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #C8A84B 0px,
+    #C8A84B 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  height: 3px;
+  width: 100%;
 }
