@@ -38,7 +38,28 @@ html {
   border-radius: 3px;
 }
 
-/* Gold divider utility */
+/* ── Particle float animation ── */
+@keyframes particleFloat {
+  0%   { transform: translateY(0) scale(1);     opacity: 0; }
+  10%  { opacity: 1; }
+  85%  { opacity: 0.4; }
+  100% { transform: translateY(-88vh) scale(0.5); opacity: 0; }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.reveal-up    { transform: translateY(36px); }
+.reveal.reveal-left  { transform: translateX(-36px); }
+.reveal.reveal-right { transform: translateX(36px); }
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+/* ── Gold divider utility ── */
 .gold-divider {
   width: 60px;
   height: 3px;

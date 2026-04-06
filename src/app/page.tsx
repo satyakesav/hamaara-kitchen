@@ -1,5 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import SpiceParticles from "@/components/SpiceParticles";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import TiltCard from "@/components/TiltCard";
+import IndiaRegions from "@/components/IndiaRegions";
 
 const ORDER_URL =
   "https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212";
@@ -33,10 +38,10 @@ const philosophyPoints = [
 ];
 
 const highlights = [
-  { label: "Menu Items", value: "190+" },
-  { label: "Cuisines Represented", value: "4+" },
-  { label: "Catering Options", value: "∞" },
-  { label: "Years of Tradition", value: "100s" },
+  { label: "Menu Items", target: 190, suffix: "+", value: "190+" },
+  { label: "Cuisines Represented", target: 4, suffix: "+", value: "4+" },
+  { label: "Catering Options", target: null, value: "∞" },
+  { label: "Years of Tradition", target: null, value: "100s" },
 ];
 
 export default function Home() {
@@ -50,11 +55,14 @@ export default function Home() {
             "radial-gradient(ellipse at 50% 0%, #2A2040 0%, #1E1829 60%, #141220 100%)",
         }}
       >
-        {/* Decorative blobs */}
+        {/* Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
           <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
           <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
         </div>
+
+        {/* Floating spice particles */}
+        <SpiceParticles />
 
         <div className="relative z-10 max-w-3xl mx-auto">
           {/* Logo */}
@@ -112,7 +120,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
       </section>
 
       {/* ── Tagline Banner ── */}
@@ -125,60 +132,78 @@ export default function Home() {
       {/* ── Stats ── */}
       <section className="bg-[#1E1829] py-14 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {highlights.map((h) => (
-            <div key={h.label}>
+          {highlights.map((h, i) => (
+            <ScrollReveal key={h.label} delay={i * 120}>
               <p
                 className="text-4xl font-bold text-[#C8A84B] mb-1"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                {h.value}
+                {h.target !== null ? (
+                  <AnimatedCounter target={h.target} suffix={h.suffix} />
+                ) : (
+                  h.value
+                )}
               </p>
-              <p className="text-xs text-gray-400 tracking-widest uppercase">{h.label}</p>
-            </div>
+              <p className="text-xs text-gray-400 tracking-widest uppercase">
+                {h.label}
+              </p>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       {/* ── Quote ── */}
       <section className="bg-[#2A2040] py-20 px-6 text-center">
-        <blockquote
-          className="text-2xl sm:text-3xl lg:text-4xl text-white font-medium max-w-3xl mx-auto leading-relaxed"
-          style={{ fontFamily: "var(--font-playfair), serif" }}
-        >
-          &ldquo;People who love to eat are always the best people&rdquo;
-        </blockquote>
-        <p className="mt-5 text-[#C8A84B] text-sm tracking-widest uppercase">— Julia Child</p>
+        <ScrollReveal>
+          <blockquote
+            className="text-2xl sm:text-3xl lg:text-4xl text-white font-medium max-w-3xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
+            &ldquo;People who love to eat are always the best people&rdquo;
+          </blockquote>
+          <p className="mt-5 text-[#C8A84B] text-sm tracking-widest uppercase">
+            — Julia Child
+          </p>
+        </ScrollReveal>
       </section>
+
+      {/* ── India Regions ── */}
+      <IndiaRegions />
 
       {/* ── Features ── */}
       <section className="bg-[#F8F5EE] py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-14">
-            <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">The Experience</p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold text-[#1E1829]"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              Why Hamaara Kitchen?
-            </h2>
-            <div className="gold-divider mt-4" />
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">
+                The Experience
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-[#1E1829]"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                Why Hamaara Kitchen?
+              </h2>
+              <div className="gold-divider mt-4" />
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((f) => (
-              <div
-                key={f.title}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-[#C8A84B]/30 transition-all duration-200 text-center"
-              >
-                <div className="text-4xl mb-4">{f.icon}</div>
-                <h3
-                  className="text-xl font-bold text-[#1E1829] mb-3"
-                  style={{ fontFamily: "var(--font-playfair), serif" }}
-                >
-                  {f.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{f.description}</p>
-              </div>
+            {features.map((f, i) => (
+              <ScrollReveal key={f.title} delay={i * 150}>
+                <TiltCard className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-[#C8A84B]/30 transition-shadow duration-200 text-center h-full">
+                  <div className="text-4xl mb-4">{f.icon}</div>
+                  <h3
+                    className="text-xl font-bold text-[#1E1829] mb-3"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
+                    {f.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {f.description}
+                  </p>
+                </TiltCard>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -187,26 +212,31 @@ export default function Home() {
       {/* ── Philosophy ── */}
       <section className="bg-[#1E1829] py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">Our Promise</p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold text-white"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              Real Food. Real Ingredients.
-            </h2>
-            <div className="gold-divider mt-4" />
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">
+                Our Promise
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-white"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                Real Food. Real Ingredients.
+              </h2>
+              <div className="gold-divider mt-4" />
+            </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {philosophyPoints.map((p) => (
-              <div
-                key={p.label}
-                className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2A2040] border border-[#C8A84B]/20 hover:border-[#C8A84B]/50 transition-colors"
-              >
-                <span className="text-3xl mb-3">{p.icon}</span>
-                <span className="text-white text-sm font-medium leading-snug">{p.label}</span>
-              </div>
+            {philosophyPoints.map((p, i) => (
+              <ScrollReveal key={p.label} delay={i * 100}>
+                <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2A2040] border border-[#C8A84B]/20 hover:border-[#C8A84B]/50 transition-colors">
+                  <span className="text-3xl mb-3">{p.icon}</span>
+                  <span className="text-white text-sm font-medium leading-snug">
+                    {p.label}
+                  </span>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -214,34 +244,36 @@ export default function Home() {
 
       {/* ── CTA ── */}
       <section className="bg-[#F8F5EE] py-20 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2
-            className="text-3xl sm:text-4xl font-bold text-[#1E1829] mb-4"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-          >
-            Ready to experience the taste of India?
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Order online for pickup or dine with us at 4300 Great America Pkwy, Suite 156,
-            Santa Clara.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={ORDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-[#C8A84B] hover:bg-[#E5C96B] text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200 shadow"
+        <ScrollReveal>
+          <div className="max-w-2xl mx-auto">
+            <h2
+              className="text-3xl sm:text-4xl font-bold text-[#1E1829] mb-4"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
             >
-              Order Online
-            </a>
-            <Link
-              href="/catering"
-              className="px-8 py-4 border-2 border-[#1E1829] hover:bg-[#1E1829] hover:text-white text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
-            >
-              Catering Inquiry
-            </Link>
+              Ready to experience the taste of India?
+            </h2>
+            <p className="text-gray-600 mb-8">
+              Order online for pickup or dine with us at 4300 Great America
+              Pkwy, Suite 156, Santa Clara.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={ORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#C8A84B] hover:bg-[#E5C96B] text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200 shadow"
+              >
+                Order Online
+              </a>
+              <Link
+                href="/catering"
+                className="px-8 py-4 border-2 border-[#1E1829] hover:bg-[#1E1829] hover:text-white text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
+              >
+                Catering Inquiry
+              </Link>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </>
   );
