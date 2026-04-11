@@ -15,9 +15,9 @@ export default function SpiceParticles() {
 
   useEffect(() => {
     setParticles(
-      Array.from({ length: 16 }, (_, i) => ({
+      Array.from({ length: 32 }, (_, i) => ({
         id: i,
-        left: 5 + (i / 16) * 90 + (Math.random() - 0.5) * 8,
+        left: 5 + (i / 32) * 90 + (Math.random() - 0.5) * 8,
         delay: Math.random() * 10,
         duration: 9 + Math.random() * 8,
         size: 2 + Math.random() * 3,

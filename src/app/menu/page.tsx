@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { menuCategories, MenuItem, MenuSubSection } from "@/data/menu";
 
 const ORDER_URL =
@@ -45,8 +45,64 @@ function SubSection({ sub }: { sub: MenuSubSection }) {
   );
 }
 
+// Flatten all items across every category for search
+type FlatItem = MenuItem & { categoryName: string };
+function getAllItems(): FlatItem[] {
+  const out: FlatItem[] = [];
+  for (const cat of menuCategories) {
+    if (cat.items) {
+      cat.items.forEach((item) => out.push({ ...item, categoryName: cat.name }));
+    }
+    if (cat.subSections) {
+      for (const sub of cat.subSections) {
+        sub.items.forEach((item) => out.push({ ...item, categoryName: cat.name }));
+      }
+    }
+  }
+  return out;
+}
+
+const allItems = getAllItems();
+
+function SearchResultCard({ item }: { item: FlatItem }) {
+  return (
+    <div className="flex items-start justify-between gap-4 py-4 border-b border-gray-100 last:border-0">
+      <div className="flex-1 min-w-0">
+        <div className="flex flex-wrap items-center gap-2 mb-0.5">
+          <span className="font-medium text-[#1E1829] text-sm leading-snug">{item.name}</span>
+          {item.isSignature && <span className="badge-signature">Signature</span>}
+          {item.isBoneIn && (
+            <span className="text-[0.6rem] font-semibold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded-full">
+              Bone-in
+            </span>
+          )}
+        </div>
+        <p className="text-[0.65rem] text-[#C8A84B] font-semibold tracking-wider uppercase mb-1">
+          {item.categoryName}
+        </p>
+        {item.description && (
+          <p className="text-gray-500 text-xs leading-relaxed">{item.description}</p>
+        )}
+      </div>
+      <span className="font-bold text-[#C8A84B] text-sm shrink-0 pt-0.5">{item.price}</span>
+    </div>
+  );
+}
+
 export default function MenuPage() {
   const [activeId, setActiveId] = useState(menuCategories[0].id);
+  const [query, setQuery] = useState("");
+
+  const searchResults = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return null;
+    return allItems.filter(
+      (item) =>
+        item.name.toLowerCase().includes(q) ||
+        item.categoryName.toLowerCase().includes(q) ||
+        (item.description ?? "").toLowerCase().includes(q)
+    );
+  }, [query]);
 
   const activeCategory = menuCategories.find((c) => c.id === activeId)!;
 
@@ -93,6 +149,35 @@ export default function MenuPage() {
         <span className="flex items-center gap-1.5">
           <span className="text-[0.6rem] font-semibold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded-full">Bone-in</span> = Bone-in preparation
         </span>
+      </div>
+
+      {/* ── Search Bar ── */}
+      <div className="bg-[#F8F5EE] border-b border-gray-200 px-4 sm:px-8 py-4">
+        <div className="max-w-3xl mx-auto relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+            </svg>
+          </span>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search 190+ dishes — try 'biryani', 'dosa', 'goat'…"
+            className="w-full pl-10 pr-10 py-3 rounded-xl border border-gray-200 bg-white text-sm text-[#1E1829] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C8A84B]/40 focus:border-[#C8A84B] transition-all shadow-sm"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              aria-label="Clear search"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* ── Menu Body ── */}
@@ -143,31 +228,62 @@ export default function MenuPage() {
 
         {/* Content */}
         <div className="flex-1 p-6 lg:p-10 max-w-3xl">
-          <div className="mb-6">
-            <h2
-              className="text-2xl sm:text-3xl font-bold text-[#1E1829] mb-1"
-              style={{ fontFamily: "var(--font-playfair), serif" }}
-            >
-              {activeCategory.name}
-            </h2>
-            {activeCategory.note && (
-              <p className="text-xs text-[#C8A84B] font-medium">{activeCategory.note}</p>
-            )}
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
-            {activeCategory.subSections ? (
-              activeCategory.subSections.map((sub) => (
-                <SubSection key={sub.title} sub={sub} />
-              ))
-            ) : (
-              <div>
-                {activeCategory.items?.map((item) => (
-                  <ItemCard key={item.name} item={item} />
-                ))}
+          {searchResults !== null ? (
+            /* ── Search Results View ── */
+            <div>
+              <div className="mb-6">
+                <h2
+                  className="text-2xl font-bold text-[#1E1829] mb-1"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
+                  {searchResults.length > 0
+                    ? `${searchResults.length} result${searchResults.length !== 1 ? "s" : ""} for "${query}"`
+                    : `No results for "${query}"`}
+                </h2>
+                {searchResults.length === 0 && (
+                  <p className="text-gray-500 text-sm mt-2">
+                    Try a different keyword — e.g. a dish name, ingredient, or cuisine type.
+                  </p>
+                )}
               </div>
-            )}
-          </div>
+              {searchResults.length > 0 && (
+                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                  {searchResults.map((item, i) => (
+                    <SearchResultCard key={`${item.name}-${i}`} item={item} />
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            /* ── Normal Category View ── */
+            <div>
+              <div className="mb-6">
+                <h2
+                  className="text-2xl sm:text-3xl font-bold text-[#1E1829] mb-1"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
+                  {activeCategory.name}
+                </h2>
+                {activeCategory.note && (
+                  <p className="text-xs text-[#C8A84B] font-medium">{activeCategory.note}</p>
+                )}
+              </div>
+
+              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                {activeCategory.subSections ? (
+                  activeCategory.subSections.map((sub) => (
+                    <SubSection key={sub.title} sub={sub} />
+                  ))
+                ) : (
+                  <div>
+                    {activeCategory.items?.map((item) => (
+                      <ItemCard key={item.name} item={item} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {/* Order CTA at bottom */}
           <div className="mt-8 p-6 bg-[#1E1829] rounded-2xl text-center">

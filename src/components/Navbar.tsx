@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -17,10 +17,33 @@ const ORDER_URL =
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-[#1E1829] text-white sticky top-0 z-50 shadow-lg">
+    <nav
+      className="text-white sticky top-0 z-50 transition-all duration-300"
+      style={
+        scrolled
+          ? {
+              background: "rgba(20, 18, 32, 0.75)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(200,168,75,0.15)",
+              borderBottom: "1px solid rgba(200, 168, 75, 0.12)",
+            }
+          : {
+              background: "#1E1829",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
+            }
+      }
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}

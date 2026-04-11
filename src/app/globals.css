@@ -94,3 +94,27 @@ html {
   height: 3px;
   width: 100%;
 }
+
+/* ── Mandala rotation ── */
+@keyframes mandalaSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes mandalaSpinReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* ── Marquee scroll ── */
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 22s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}

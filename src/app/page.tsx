@@ -61,6 +61,87 @@ export default function Home() {
           <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
         </div>
 
+        {/* Rotating Mandala — outer ring */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          aria-hidden
+        >
+          <svg
+            viewBox="0 0 400 400"
+            className="w-[min(90vw,680px)] h-[min(90vw,680px)] opacity-[0.055]"
+            style={{ animation: "mandalaSpin 90s linear infinite" }}
+          >
+            {/* Outer petal ring */}
+            {Array.from({ length: 16 }).map((_, i) => (
+              <ellipse
+                key={i}
+                cx="200"
+                cy="200"
+                rx="14"
+                ry="55"
+                fill="none"
+                stroke="#C8A84B"
+                strokeWidth="1"
+                transform={`rotate(${i * 22.5} 200 200) translate(0 -120)`}
+              />
+            ))}
+            {/* Middle ring */}
+            {Array.from({ length: 12 }).map((_, i) => (
+              <ellipse
+                key={i}
+                cx="200"
+                cy="200"
+                rx="10"
+                ry="36"
+                fill="none"
+                stroke="#C8A84B"
+                strokeWidth="0.8"
+                transform={`rotate(${i * 30} 200 200) translate(0 -78)`}
+              />
+            ))}
+            {/* Inner hex */}
+            {Array.from({ length: 6 }).map((_, i) => (
+              <line
+                key={i}
+                x1="200"
+                y1="170"
+                x2="200"
+                y2="230"
+                stroke="#C8A84B"
+                strokeWidth="0.8"
+                transform={`rotate(${i * 60} 200 200)`}
+              />
+            ))}
+            <circle cx="200" cy="200" r="18" fill="none" stroke="#C8A84B" strokeWidth="1" />
+            <circle cx="200" cy="200" r="80" fill="none" stroke="#C8A84B" strokeWidth="0.5" strokeDasharray="4 6" />
+            <circle cx="200" cy="200" r="140" fill="none" stroke="#C8A84B" strokeWidth="0.5" strokeDasharray="2 8" />
+            <circle cx="200" cy="200" r="190" fill="none" stroke="#C8A84B" strokeWidth="0.4" strokeDasharray="1 10" />
+          </svg>
+
+          {/* Counter-rotating inner mandala */}
+          <svg
+            viewBox="0 0 200 200"
+            className="absolute w-[min(40vw,320px)] h-[min(40vw,320px)] opacity-[0.04]"
+            style={{ animation: "mandalaSpinReverse 60s linear infinite" }}
+          >
+            {Array.from({ length: 8 }).map((_, i) => (
+              <ellipse
+                key={i}
+                cx="100"
+                cy="100"
+                rx="8"
+                ry="32"
+                fill="none"
+                stroke="#E5C96B"
+                strokeWidth="1"
+                transform={`rotate(${i * 45} 100 100) translate(0 -50)`}
+              />
+            ))}
+            <circle cx="100" cy="100" r="12" fill="none" stroke="#E5C96B" strokeWidth="1.2" />
+            <circle cx="100" cy="100" r="50" fill="none" stroke="#E5C96B" strokeWidth="0.6" strokeDasharray="3 5" />
+          </svg>
+        </div>
+
         {/* Floating spice particles */}
         <SpiceParticles />
 
@@ -122,11 +203,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Tagline Banner ── */}
-      <section className="bg-[#C8A84B] py-5 px-4 text-center">
-        <p className="text-[#1E1829] font-semibold text-sm sm:text-base tracking-[0.2em] uppercase">
-          Authentic · Homestyle · Soulful · Indian Cuisine
-        </p>
+      {/* ── Tagline Banner (Marquee) ── */}
+      <section className="bg-[#C8A84B] py-4 overflow-hidden">
+        <div className="marquee-track select-none" aria-hidden>
+          {[...Array(2)].map((_, pass) => (
+            <span key={pass} className="flex items-center gap-0">
+              {[
+                "Authentic",
+                "Homestyle",
+                "Soulful",
+                "Indian Cuisine",
+                "No Seed Oils",
+                "No MSG",
+                "190+ Dishes",
+                "Four Regional Cuisines",
+                "Santa Clara, CA",
+              ].map((word) => (
+                <span
+                  key={word}
+                  className="flex items-center text-[#1E1829] font-semibold text-sm tracking-[0.18em] uppercase whitespace-nowrap"
+                >
+                  {word}
+                  <span className="mx-6 text-[#1E1829]/40 text-xs">✦</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
       </section>
 
       {/* ── Stats ── */}
@@ -169,45 +272,6 @@ export default function Home() {
 
       {/* ── India Regions ── */}
       <IndiaRegions />
-
-      {/* ── Features ── */}
-      <section className="bg-[#F8F5EE] py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-14">
-              <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">
-                The Experience
-              </p>
-              <h2
-                className="text-3xl sm:text-4xl font-bold text-[#1E1829]"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
-              >
-                Why Hamaara Kitchen?
-              </h2>
-              <div className="gold-divider mt-4" />
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((f, i) => (
-              <ScrollReveal key={f.title} delay={i * 150}>
-                <TiltCard className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-[#C8A84B]/30 transition-shadow duration-200 text-center h-full">
-                  <div className="text-4xl mb-4">{f.icon}</div>
-                  <h3
-                    className="text-xl font-bold text-[#1E1829] mb-3"
-                    style={{ fontFamily: "var(--font-playfair), serif" }}
-                  >
-                    {f.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {f.description}
-                  </p>
-                </TiltCard>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Philosophy ── */}
       <section className="bg-[#1E1829] py-20 px-6">
