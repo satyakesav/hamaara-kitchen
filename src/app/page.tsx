@@ -233,12 +233,12 @@ export default function Home() {
       </section>
 
       {/* ── Stats ── */}
-      <section className="bg-[#1E1829] py-14 px-4">
+      <section className="py-14 px-4" style={{ background: "#F2EDE4" }}>
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {highlights.map((h, i) => (
             <ScrollReveal key={h.label} delay={i * 120}>
               <p
-                className="text-4xl font-bold text-[#C8A84B] mb-1"
+                className="text-4xl font-bold text-[#C84800] mb-1"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 {h.target !== null ? (
@@ -247,7 +247,7 @@ export default function Home() {
                   h.value
                 )}
               </p>
-              <p className="text-xs text-gray-400 tracking-widest uppercase">
+              <p className="text-xs text-gray-500 tracking-widest uppercase">
                 {h.label}
               </p>
             </ScrollReveal>
@@ -256,15 +256,15 @@ export default function Home() {
       </section>
 
       {/* ── Quote ── */}
-      <section className="bg-[#2A2040] py-20 px-6 text-center">
+      <section className="py-20 px-6 text-center" style={{ background: "#E8DFD0" }}>
         <ScrollReveal>
           <blockquote
-            className="text-2xl sm:text-3xl lg:text-4xl text-white font-medium max-w-3xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+            className="text-2xl sm:text-3xl lg:text-4xl font-medium max-w-3xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#3A2A1A" }}
           >
             &ldquo;People who love to eat are always the best people&rdquo;
           </blockquote>
-          <p className="mt-5 text-[#C8A84B] text-sm tracking-widest uppercase">
+          <p className="mt-5 text-sm tracking-widest uppercase" style={{ color: "#C84800" }}>
             — Julia Child
           </p>
         </ScrollReveal>
@@ -274,16 +274,16 @@ export default function Home() {
       <IndiaRegions />
 
       {/* ── Philosophy ── */}
-      <section className="bg-[#1E1829] py-20 px-6">
+      <section className="py-20 px-6" style={{ background: "#F2EDE4" }}>
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">
+              <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "#C84800" }}>
                 Our Promise
               </p>
               <h2
-                className="text-3xl sm:text-4xl font-bold text-white"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
+                className="text-3xl sm:text-4xl font-bold"
+                style={{ fontFamily: "var(--font-playfair), serif", color: "#3A2A1A" }}
               >
                 Real Food. Real Ingredients.
               </h2>
@@ -294,9 +294,10 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {philosophyPoints.map((p, i) => (
               <ScrollReveal key={p.label} delay={i * 100}>
-                <div className="flex flex-col items-center text-center p-6 rounded-xl bg-[#2A2040] border border-[#C8A84B]/20 hover:border-[#C8A84B]/50 transition-colors">
+                <div className="flex flex-col items-center text-center p-6 rounded-xl border transition-colors"
+                  style={{ background: "#EDE5D8", borderColor: "rgba(200,72,0,0.15)" }}>
                   <span className="text-3xl mb-3">{p.icon}</span>
-                  <span className="text-white text-sm font-medium leading-snug">
+                  <span className="text-sm font-medium leading-snug" style={{ color: "#3A2A1A" }}>
                     {p.label}
                   </span>
                 </div>
@@ -307,7 +308,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-[#F8F5EE] py-20 px-6 text-center">
+      <section className="py-20 px-6 text-center" style={{ background: "#F2EDE4" }}>
         <ScrollReveal>
           <div className="max-w-2xl mx-auto">
             <h2
