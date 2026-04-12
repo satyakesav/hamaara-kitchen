@@ -8,6 +8,7 @@ import Image from "next/image";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
+  { href: "/happy-hour", label: "Happy Hour" },
   { href: "/catering", label: "Catering" },
   { href: "/about", label: "About" },
 ];
@@ -53,6 +54,7 @@ export default function Navbar() {
                 src="/logo.png"
                 alt="Hamaara Indian Kitchen"
                 fill
+                sizes="56px"
                 className="object-contain"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
