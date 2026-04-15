@@ -27,19 +27,19 @@ export default function CateringPage() {
         className="py-24 px-6 text-center"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, #2A2040 0%, #1E1829 70%, #141220 100%)",
+            "radial-gradient(ellipse at 50% 0%, #FDF9F4 0%, #FAF6F0 70%, #F5EEE4 100%)",
         }}
       >
         <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">
           Events & Parties
         </p>
         <h1
-          className="text-4xl sm:text-5xl font-bold text-white mb-4"
+          className="text-4xl sm:text-5xl font-bold text-[#3D1C0D] mb-4"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           We Cater!
         </h1>
-        <p className="text-gray-400 max-w-xl mx-auto text-lg">
+        <p className="text-[#5C3A20] max-w-xl mx-auto text-lg">
           Let us take care of the food while you relax and spend time with your guests.
         </p>
         <div className="flex items-center justify-center gap-3 mt-6">
@@ -78,15 +78,15 @@ export default function CateringPage() {
           </div>
 
           {/* Contact Card */}
-          <div className="bg-[#1E1829] rounded-2xl p-10 text-center">
+          <div className="bg-[#FAF6F0] rounded-2xl p-10 text-center border border-[#3D1C0D]/20">
             <div className="text-5xl mb-5">🤝</div>
             <h3
-              className="text-2xl font-bold text-[#C8A84B] mb-4"
+              className="text-2xl font-bold text-[#3D1C0D] mb-4"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Talk to Us About Your Next Event
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-8">
+            <p className="text-[#5C3A20] text-sm leading-relaxed mb-8">
               Our customized food options cater to all dietary needs and preferences — be it
               a traditional no-onion-garlic sattvic menu, a fun fusion globally inspired
               meal, corporate lunch boxes, or a dosa party. We can handle it all.
@@ -107,7 +107,7 @@ export default function CateringPage() {
 
               <a
                 href="tel:+14085644083"
-                className="flex items-center justify-center gap-3 w-full px-6 py-4 border border-[#C8A84B]/40 hover:border-[#C8A84B] text-[#C8A84B] font-bold text-sm tracking-wider uppercase rounded-xl transition-colors"
+                className="flex items-center justify-center gap-3 w-full px-6 py-4 border border-[#3D1C0D]/40 hover:border-[#3D1C0D] text-[#3D1C0D] font-bold text-sm tracking-wider uppercase rounded-xl transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -117,7 +117,7 @@ export default function CateringPage() {
 
               <a
                 href="mailto:Balajimesssc@gmail.com"
-                className="flex items-center justify-center gap-3 w-full px-6 py-4 border border-[#C8A84B]/40 hover:border-[#C8A84B] text-[#C8A84B] font-bold text-sm tracking-wider uppercase rounded-xl transition-colors"
+                className="flex items-center justify-center gap-3 w-full px-6 py-4 border border-[#3D1C0D]/40 hover:border-[#3D1C0D] text-[#3D1C0D] font-bold text-sm tracking-wider uppercase rounded-xl transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -130,19 +130,19 @@ export default function CateringPage() {
       </section>
 
       {/* ── Corporate Section ── */}
-      <section className="bg-[#1E1829] py-20 px-6">
+      <section className="bg-[#FAF6F0] py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-5xl mb-6">🏢</div>
-          <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">
+          <p className="text-xs text-[#8B4A00] tracking-widest uppercase mb-3">
             Corporate Catering
           </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl font-bold text-[#3D1C0D] mb-6"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Office Lunch? We&apos;ve Got You.
           </h2>
-          <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-[#5C3A20] leading-relaxed max-w-2xl mx-auto mb-10">
             We work with corporations and have an exclusive office lunch menu. Whether you
             need daily hot lunches, a one-time team event, or a recurring catering
             arrangement — talk to us and we&apos;ll build a plan around your needs.

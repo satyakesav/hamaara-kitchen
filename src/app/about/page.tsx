@@ -42,12 +42,12 @@ export default function AboutPage() {
         className="py-24 px-6 text-center"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, #2A2040 0%, #1E1829 70%, #141220 100%)",
+            "radial-gradient(ellipse at 50% 0%, #EDD48A 0%, #E8C87A 70%, #DEB860 100%)",
         }}
       >
-        <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">Our Story</p>
+        <p className="text-xs text-[#5C3A00] tracking-widest uppercase mb-3">Our Story</p>
         <h1
-          className="text-4xl sm:text-5xl font-bold text-white mb-4"
+          className="text-4xl sm:text-5xl font-bold text-[#3D1C0D] mb-4"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           About Hamaara Kitchen
@@ -93,15 +93,15 @@ export default function AboutPage() {
 
           {/* Decorative block */}
           <div className="relative">
-            <div className="bg-[#1E1829] rounded-2xl p-10 text-center">
+            <div className="bg-[#FAF6F0] rounded-2xl p-10 text-center border border-[#3D1C0D]/20">
               <div className="text-6xl mb-6">🍱</div>
               <h3
-                className="text-2xl font-bold text-[#C8A84B] mb-4"
+                className="text-2xl font-bold text-[#3D1C0D] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Our Commitment
               </h3>
-              <ul className="text-gray-300 text-sm space-y-3 text-left">
+              <ul className="text-[#5C3A20] text-sm space-y-3 text-left">
                 {[
                   "Homestyle meals made with care",
                   "No industrial seed oils ever",
@@ -122,14 +122,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Philosophy Grid ── */}
-      <section className="bg-[#1E1829] py-20 px-6">
+      <section className="bg-[#FAF6F0] py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-2">
+            <p className="text-xs text-[#8B4A00] tracking-widest uppercase mb-2">
               The Hamaara Way
             </p>
             <h2
-              className="text-3xl sm:text-4xl font-bold text-white"
+              className="text-3xl sm:text-4xl font-bold text-[#3D1C0D]"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Real Food. No Shortcuts.
@@ -141,16 +141,16 @@ export default function AboutPage() {
             {philosophyPoints.map((p) => (
               <div
                 key={p.title}
-                className="bg-[#2A2040] rounded-xl p-8 border border-[#C8A84B]/20 hover:border-[#C8A84B]/50 transition-colors"
+                className="bg-[#FDF9F4] rounded-xl p-8 border border-[#3D1C0D]/20 hover:border-[#3D1C0D]/40 transition-colors"
               >
                 <div className="text-4xl mb-4">{p.icon}</div>
                 <h3
-                  className="text-xl font-bold text-[#C8A84B] mb-3"
+                  className="text-xl font-bold text-[#3D1C0D] mb-3"
                   style={{ fontFamily: "var(--font-playfair), serif" }}
                 >
                   {p.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{p.description}</p>
+                <p className="text-[#5C3A20] text-sm leading-relaxed">{p.description}</p>
               </div>
             ))}
           </div>
@@ -211,7 +211,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/menu"
-              className="px-8 py-4 border-2 border-[#1E1829] hover:bg-[#1E1829] hover:text-white text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors"
+              className="px-8 py-4 border-2 border-[#1E1829] hover:bg-[#FAF6F0] hover:text-white text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors"
             >
               View Our Menu
             </Link>

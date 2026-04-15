@@ -41,24 +41,24 @@ export default function IndiaRegions() {
   const activeRegion = regions.find((r) => r.id === active);
 
   return (
-    <section className="bg-[#141220] py-24 px-6">
+    <section className="bg-[#F5EEE4] py-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">
+          <p className="text-xs text-[#5C3A00] tracking-widest uppercase mb-3">
             Our Inspiration
           </p>
           <h2
-            className="text-3xl sm:text-4xl font-bold text-white mb-4"
+            className="text-3xl sm:text-4xl font-bold text-[#3D1C0D] mb-4"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             A Journey Across India
           </h2>
-          <p className="text-gray-400 max-w-lg mx-auto text-sm leading-relaxed">
+          <p className="text-[#5C3A20] max-w-lg mx-auto text-sm leading-relaxed">
             Every dish we serve carries the soul of a region. Hover to explore
             the culinary traditions that inspire our kitchen daily.
           </p>
-          <div className="gold-divider mt-6" />
+          <div className="mt-6" style={{ width: 60, height: 3, background: "#5C3A00", margin: "12px auto 0" }} />
         </div>
 
         {/* Region cards */}
@@ -72,12 +72,12 @@ export default function IndiaRegions() {
               style={{
                 borderColor:
                   active === region.id
-                    ? `${region.color}60`
-                    : "rgba(255,255,255,0.08)",
+                    ? region.color
+                    : "rgba(61,28,13,0.25)",
                 background:
                   active === region.id
-                    ? `${region.color}12`
-                    : "rgba(255,255,255,0.02)",
+                    ? `${region.color}45`
+                    : "rgba(255,255,255,0.15)",
               }}
             >
               {/* Glow on hover */}
@@ -89,12 +89,12 @@ export default function IndiaRegions() {
               />
               <span className="text-3xl block mb-3 relative">{region.emoji}</span>
               <h3
-                className="text-white font-bold text-base mb-1 relative"
+                className="text-[#3D1C0D] font-bold text-base mb-1 relative"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 {region.name}
               </h3>
-              <p className="text-xs text-gray-500 italic relative">
+              <p className="text-xs text-[#5C3A20] italic relative">
                 {region.description}
               </p>
               {/* Bottom accent bar */}
@@ -115,18 +115,18 @@ export default function IndiaRegions() {
           className="rounded-2xl border p-8 min-h-[120px] flex items-center justify-center transition-all duration-500"
           style={{
             borderColor: activeRegion
-              ? `${activeRegion.color}35`
-              : "rgba(255,255,255,0.06)",
+              ? `${activeRegion.color}90`
+              : "rgba(61,28,13,0.20)",
             background: activeRegion
-              ? `${activeRegion.color}08`
-              : "rgba(255,255,255,0.02)",
+              ? `${activeRegion.color}30`
+              : "rgba(255,255,255,0.10)",
           }}
         >
           {activeRegion ? (
             <div className="text-center w-full">
               <p
                 className="text-xs tracking-widest uppercase mb-5 font-semibold"
-                style={{ color: activeRegion.color }}
+                style={{ color: "#3D1C0D" }}
               >
                 {activeRegion.name} · Signatures on Our Menu
               </p>
@@ -134,10 +134,10 @@ export default function IndiaRegions() {
                 {activeRegion.dishes.map((dish, i) => (
                   <span
                     key={dish}
-                    className="px-4 py-1.5 rounded-full text-sm text-white border"
+                    className="px-4 py-1.5 rounded-full text-sm text-[#3D1C0D] border"
                     style={{
-                      borderColor: `${activeRegion.color}40`,
-                      background: `${activeRegion.color}18`,
+                      borderColor: `${activeRegion.color}90`,
+                      background: `${activeRegion.color}35`,
                       animationDelay: `${i * 60}ms`,
                     }}
                   >
@@ -147,7 +147,7 @@ export default function IndiaRegions() {
               </div>
             </div>
           ) : (
-            <p className="text-gray-600 text-sm italic">
+            <p className="text-[#5C3A20] text-sm italic">
               Hover a region above to explore its dishes ↑
             </p>
           )}

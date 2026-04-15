@@ -29,18 +29,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className="text-white sticky top-0 z-50 transition-all duration-300"
+      className="text-[#3D1C0D] sticky top-0 z-50 transition-all duration-300"
       style={
         scrolled
           ? {
-              background: "rgba(20, 18, 32, 0.75)",
+              background: "rgba(250, 246, 240, 0.95)",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
               boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(200,168,75,0.15)",
               borderBottom: "1px solid rgba(200, 168, 75, 0.12)",
             }
           : {
-              background: "#1E1829",
+              background: "#FAF6F0",
               boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
             }
       }
@@ -61,11 +61,11 @@ export default function Navbar() {
                 }}
               />
             </div>
-            <div className="leading-tight">
-              <span className="block text-[#C8A84B] font-bold text-lg tracking-wide">
+            <div className="leading-tight text-center">
+              <span className="block text-[#3D1C0D] font-bold text-lg tracking-wide uppercase">
                 Hamaara
               </span>
-              <span className="block text-xs text-gray-300 tracking-widest uppercase">
+              <span className="block text-xs text-[#5C3A20] tracking-widest uppercase">
                 Indian Kitchen
               </span>
             </div>
@@ -79,8 +79,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium tracking-wider uppercase transition-colors duration-200 ${
                   pathname === link.href
-                    ? "text-[#C8A84B]"
-                    : "text-gray-300 hover:text-[#C8A84B]"
+                    ? "text-[#8B4A00]"
+                    : "text-[#3D1C0D] hover:text-[#8B4A00]"
                 }`}
               >
                 {link.label}
@@ -102,7 +102,7 @@ export default function Navbar() {
             {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 rounded text-gray-300 hover:text-[#C8A84B]"
+              className="md:hidden p-2 rounded text-[#3D1C0D] hover:text-[#8B4A00]"
               aria-label="Toggle menu"
             >
               {open ? (
@@ -121,7 +121,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-[#141220] border-t border-[#C8A84B]/20">
+        <div className="md:hidden bg-[#F5EEE4] border-t border-[#3D1C0D]/20">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -130,8 +130,8 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className={`block px-3 py-2.5 text-sm font-medium tracking-wider uppercase rounded transition-colors ${
                   pathname === link.href
-                    ? "text-[#C8A84B] bg-[#C8A84B]/10"
-                    : "text-gray-300 hover:text-[#C8A84B] hover:bg-[#C8A84B]/5"
+                    ? "text-[#8B4A00] bg-[#8B4A00]/10"
+                    : "text-[#3D1C0D] hover:text-[#8B4A00] hover:bg-[#8B4A00]/5"
                 }`}
               >
                 {link.label}

@@ -21,7 +21,7 @@ export default function SpiceParticles() {
         delay: Math.random() * 10,
         duration: 9 + Math.random() * 8,
         size: 2 + Math.random() * 3,
-        opacity: 0.12 + Math.random() * 0.2,
+        opacity: 0.55 + Math.random() * 0.4,
       }))
     );
   }, []);

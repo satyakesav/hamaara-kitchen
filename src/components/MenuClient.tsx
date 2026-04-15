@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -37,8 +37,8 @@ const ORDER_URL =
   "https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212";
 
 const GOLD = "#C8A84B";
-const SIDEBAR_BG = "#302C28";
-const SIDEBAR_BODY = "#3A3530";
+const SIDEBAR_BG = "#FAF6F0";
+const SIDEBAR_BODY = "#F5EEE4";
 const CREAM = "#F2EDE4";
 const CHARCOAL_TEXT = "#2A2520";
 const MUTED_TEXT = "#7A6E64";
@@ -387,6 +387,27 @@ export default function MenuClient({ categories }: Props) {
 
   const allItems = useMemo(() => flattenAll(categories), [categories]);
 
+  const pillsRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+
+  function onPillsMouseDown(e: React.MouseEvent) {
+    const el = pillsRef.current;
+    if (!el) return;
+    dragState.current = { isDown: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft };
+    el.style.cursor = "grabbing";
+  }
+  function onPillsMouseLeaveOrUp() {
+    dragState.current.isDown = false;
+    if (pillsRef.current) pillsRef.current.style.cursor = "grab";
+  }
+  function onPillsMouseMove(e: React.MouseEvent) {
+    if (!dragState.current.isDown || !pillsRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - pillsRef.current.offsetLeft;
+    const walk = (x - dragState.current.startX) * 1.5;
+    pillsRef.current.scrollLeft = dragState.current.scrollLeft - walk;
+  }
+
   const searchResults = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return null;
@@ -414,7 +435,7 @@ export default function MenuClient({ categories }: Props) {
           width: 240,
           flexShrink: 0,
           background: SIDEBAR_BG,
-          borderRight: "1px solid rgba(255,255,255,0.06)",
+          borderRight: "1px solid rgba(0,0,0,0.10)",
           overflowY: "auto",
           scrollbarWidth: "none",
         }}
@@ -423,7 +444,7 @@ export default function MenuClient({ categories }: Props) {
         <div
           style={{
             padding: "20px 20px 16px",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "1px solid rgba(0,0,0,0.10)",
           }}
         >
           <p
@@ -440,7 +461,7 @@ export default function MenuClient({ categories }: Props) {
           <p
             style={{
               fontSize: "0.58rem",
-              color: "#6B5F52",
+              color: "#5C3A20",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               marginTop: 2,
@@ -454,7 +475,7 @@ export default function MenuClient({ categories }: Props) {
         <div
           style={{
             padding: "12px 16px",
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "1px solid rgba(0,0,0,0.10)",
           }}
         >
           <div style={{ position: "relative" }}>
@@ -466,7 +487,7 @@ export default function MenuClient({ categories }: Props) {
                 transform: "translateY(-50%)",
                 width: 12,
                 height: 12,
-                color: "#6B5F52",
+                color: "#5C3A20",
               }}
               fill="none"
               viewBox="0 0 24 24"
@@ -484,6 +505,7 @@ export default function MenuClient({ categories }: Props) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search dishes…"
+              className="menu-search-input"
               style={{
                 width: "100%",
                 paddingLeft: 28,
@@ -492,9 +514,9 @@ export default function MenuClient({ categories }: Props) {
                 paddingBottom: 7,
                 borderRadius: 8,
                 fontSize: "0.75rem",
-                color: "#F5EDE0",
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(200,168,75,0.15)",
+                color: "#3D1C0D",
+                background: "#FFFFFF",
+                border: "1px solid rgba(61,28,13,0.35)",
                 outline: "none",
                 boxSizing: "border-box",
               }}
@@ -510,7 +532,7 @@ export default function MenuClient({ categories }: Props) {
                   background: "none",
                   border: "none",
                   cursor: "pointer",
-                  color: "#6B5F52",
+                  color: "#5C3A20",
                   padding: 0,
                   display: "flex",
                 }}
@@ -572,7 +594,7 @@ export default function MenuClient({ categories }: Props) {
         <div
           style={{
             padding: 16,
-            borderTop: "1px solid rgba(255,255,255,0.06)",
+            borderTop: "1px solid rgba(0,0,0,0.10)",
           }}
         >
           <a
@@ -617,7 +639,7 @@ export default function MenuClient({ categories }: Props) {
             top: 0,
             zIndex: 10,
             background: SIDEBAR_BG,
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "1px solid rgba(0,0,0,0.10)",
           }}
         >
           <div style={{ padding: "12px 16px 8px" }}>
@@ -630,7 +652,7 @@ export default function MenuClient({ categories }: Props) {
                   transform: "translateY(-50%)",
                   width: 14,
                   height: 14,
-                  color: "#6B5F52",
+                  color: "#5C3A20",
                 }}
                 fill="none"
                 viewBox="0 0 24 24"
@@ -644,6 +666,7 @@ export default function MenuClient({ categories }: Props) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search dishes…"
+              className="menu-search-input"
                 style={{
                   width: "100%",
                   paddingLeft: 34,
@@ -670,7 +693,7 @@ export default function MenuClient({ categories }: Props) {
                     background: "none",
                     border: "none",
                     cursor: "pointer",
-                    color: "#6B5F52",
+                    color: "#5C3A20",
                     padding: 0,
                     display: "flex",
                   }}
@@ -682,7 +705,15 @@ export default function MenuClient({ categories }: Props) {
               )}
             </div>
           </div>
-          <div style={{ overflowX: "auto", padding: "0 16px 12px" }}>
+          <div
+            ref={pillsRef}
+            onMouseDown={onPillsMouseDown}
+            onMouseLeave={onPillsMouseLeaveOrUp}
+            onMouseUp={onPillsMouseLeaveOrUp}
+            onMouseMove={onPillsMouseMove}
+            style={{ overflowX: "auto", padding: "0 16px 12px", scrollbarWidth: "none", msOverflowStyle: "none", cursor: "grab", userSelect: "none" }}
+            className="[&::-webkit-scrollbar]:hidden"
+          >
             <div style={{ display: "flex", gap: 8, minWidth: "max-content" }}>
               {categories.map((cat) => {
                 const isActive = activeId === cat.id && !query;
@@ -696,8 +727,8 @@ export default function MenuClient({ categories }: Props) {
                       fontSize: "0.75rem",
                       fontWeight: 600,
                       whiteSpace: "nowrap",
-                      background: isActive ? GOLD : "rgba(255,255,255,0.06)",
-                      color: isActive ? "#1E1829" : "#9C8E7E",
+                      background: isActive ? GOLD : "rgba(0,0,0,0.08)",
+                      color: isActive ? "#3D1C0D" : "#5C3A20",
                       border: "none",
                       cursor: "pointer",
                     }}

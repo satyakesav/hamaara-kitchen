@@ -52,7 +52,7 @@ export default function Home() {
         className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-6"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, #2A2040 0%, #1E1829 60%, #141220 100%)",
+            "radial-gradient(ellipse at 50% 0%, #FDF9F4 0%, #FAF6F0 60%, #F5EEE4 100%)",
         }}
       >
         {/* Blobs */}
@@ -68,7 +68,7 @@ export default function Home() {
         >
           <svg
             viewBox="0 0 400 400"
-            className="w-[min(90vw,680px)] h-[min(90vw,680px)] opacity-[0.055]"
+            className="w-[min(90vw,680px)] h-[min(90vw,680px)] opacity-[0.25]"
             style={{ animation: "mandalaSpin 90s linear infinite" }}
           >
             {/* Outer petal ring */}
@@ -121,7 +121,7 @@ export default function Home() {
           {/* Counter-rotating inner mandala */}
           <svg
             viewBox="0 0 200 200"
-            className="absolute w-[min(40vw,320px)] h-[min(40vw,320px)] opacity-[0.04]"
+            className="absolute w-[min(40vw,320px)] h-[min(40vw,320px)] opacity-[0.15]"
             style={{ animation: "mandalaSpinReverse 60s linear infinite" }}
           >
             {Array.from({ length: 8 }).map((_, i) => (
@@ -159,12 +159,12 @@ export default function Home() {
           </div>
 
           <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#C8A84B] mb-3 leading-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#3D1C0D] mb-3 leading-tight"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Hamaara
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-200 tracking-[0.25em] uppercase mb-6">
+          <p className="text-xl sm:text-2xl text-[#5C3A20] tracking-[0.25em] uppercase mb-6 opacity-80">
             Indian Kitchen
           </p>
 
@@ -175,12 +175,12 @@ export default function Home() {
           </div>
 
           <p
-            className="text-2xl sm:text-3xl text-white mb-3"
+            className="text-2xl sm:text-3xl text-[#3D1C0D] mb-3"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             One India, Many Cultures, One Table
           </p>
-          <p className="text-gray-400 mb-10 text-lg">
+          <p className="text-[#5C3A20] mb-10 text-lg">
             A culinary journey across India, right here in Santa Clara, CA
           </p>
 
@@ -195,7 +195,7 @@ export default function Home() {
             </a>
             <Link
               href="/menu"
-              className="px-8 py-4 border border-[#C8A84B]/60 hover:border-[#C8A84B] text-[#C8A84B] hover:bg-[#C8A84B]/10 font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
+              className="px-8 py-4 border border-[#3D1C0D]/60 hover:border-[#3D1C0D] text-[#3D1C0D] hover:bg-[#3D1C0D]/10 font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
             >
               View Menu
             </Link>
