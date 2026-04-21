@@ -38,7 +38,6 @@ const ORDER_URL =
 
 const GOLD = "#C8A84B";
 const SIDEBAR_BG = "#FAF6F0";
-const SIDEBAR_BODY = "#F5EEE4";
 const CREAM = "#F2EDE4";
 const CHARCOAL_TEXT = "#2A2520";
 const MUTED_TEXT = "#7A6E64";
@@ -293,11 +292,9 @@ function CategoryPanel({
 function SearchResults({
   results,
   query,
-  categories,
 }: {
   results: FlatItem[];
   query: string;
-  categories: MenuCategory[];
 }) {
   // Group by category name preserving order
   const grouped: { categoryName: string; items: FlatItem[] }[] = [];
@@ -456,7 +453,7 @@ export default function MenuClient({ categories }: Props) {
               lineHeight: 1.2,
             }}
           >
-            Hamaara
+            HAMAARA
           </p>
           <p
             style={{
@@ -751,7 +748,7 @@ export default function MenuClient({ categories }: Props) {
           }}
         >
           {searchResults !== null ? (
-            <SearchResults results={searchResults} query={query} categories={categories} />
+            <SearchResults results={searchResults} query={query} />
           ) : (
             <CategoryPanel category={activeCategory} query={query} />
           )}

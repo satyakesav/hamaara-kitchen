@@ -1,222 +1,112 @@
 import Link from "next/link";
 import Image from "next/image";
-import SpiceParticles from "@/components/SpiceParticles";
 import ScrollReveal from "@/components/ScrollReveal";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import TiltCard from "@/components/TiltCard";
-import IndiaRegions from "@/components/IndiaRegions";
 
 const ORDER_URL =
   "https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212";
 
-const features = [
-  {
-    title: "A La Carte Menu",
-    description:
-      "190+ dishes spanning tiffins, dosas, curries, biryanis, and more — each crafted with care and authentic spices.",
-    icon: "🍛",
-  },
-  {
-    title: "Everyday Specials",
-    description:
-      "We bring new dishes every day using seasonal vegetables and locally sourced produce. Every visit is a new experience.",
-    icon: "✨",
-  },
-  {
-    title: "No Shortcuts",
-    description:
-      "No industrial seed oils, no MSG, no artificial preservatives or food dyes. Real food cooked the right way.",
-    icon: "🌿",
-  },
+const menuCuisineImages = [
+  { label: "South", src: "/images/home/offerings/menu/south.jpg" },
+  { label: "North", src: "/images/home/offerings/menu/north.jpg" },
+  { label: "East", src: "/images/home/offerings/menu/east.jpg" },
+  { label: "West", src: "/images/home/offerings/menu/west.jpg" },
 ];
 
-const philosophyPoints = [
-  { label: "Homestyle Cooking", icon: "🏠" },
-  { label: "No Industrial Seed Oils", icon: "🫒" },
-  { label: "No MSG", icon: "🚫" },
-  { label: "No Food Colors or Preservatives", icon: "🌱" },
-];
+const menuCoverImage: string | null = "/images/home/offerings/menu/cover.png";
+const happyHourCoverImage: string | null = "/images/home/offerings/happy-hour/cover.png";
+const cateringCoverImage: string | null = "/images/home/offerings/catering/cover.jpg";
 
-const highlights = [
-  { label: "Menu Items", target: 190, suffix: "+", value: "190+" },
-  { label: "Cuisines Represented", target: 4, suffix: "+", value: "4+" },
-  { label: "Catering Options", target: null, value: "∞" },
-  { label: "Years of Tradition", target: null, value: "100s" },
+const offerings = [
+  {
+    title: "Full Menu",
+    description:
+      "Explore South, North, East and West Indian flavors in one place with homestyle cooking and authentic ingredients.",
+    href: "/menu",
+    cta: "Explore Menu",
+    imageSrc: menuCoverImage,
+    imageAlt: "Pan-Indian dishes from different regions",
+    placeholderLabel: "Menu photo",
+    cuisines: ["South", "North", "East", "West"],
+  },
+  {
+    title: "Happy Hour",
+    description:
+      "Evening bites and beverage specials crafted for a relaxed, social dining experience.",
+    href: "/happy-hour",
+    cta: "See Happy Hour",
+    imageSrc: happyHourCoverImage,
+    imageAlt: "Happy Hour drinks and snacks",
+    placeholderLabel: "Add happy-hour cover image",
+    cuisines: [],
+  },
+  {
+    title: "Catering",
+    description:
+      "Thoughtful catering for friends, family, and corporate events with flexible menus and portion planning.",
+    href: "/catering",
+    cta: "Book Catering",
+    imageSrc: cateringCoverImage,
+    imageAlt: "Catering setup for events",
+    placeholderLabel: "Add catering cover image",
+    cuisines: [],
+  },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* ── Hero ── */}
       <section
-        className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-6"
+        className="relative px-6 pt-16 pb-12 lg:pt-20 lg:pb-16"
         style={{
           background:
             "radial-gradient(ellipse at 50% 0%, #FDF9F4 0%, #FAF6F0 60%, #F5EEE4 100%)",
         }}
       >
-        {/* Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
           <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
           <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
         </div>
 
-        {/* Rotating Mandala — outer ring */}
-        <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          aria-hidden
-        >
-          <svg
-            viewBox="0 0 400 400"
-            className="w-[min(90vw,680px)] h-[min(90vw,680px)] opacity-[0.25]"
-            style={{ animation: "mandalaSpin 90s linear infinite" }}
-          >
-            {/* Outer petal ring */}
-            {Array.from({ length: 16 }).map((_, i) => (
-              <ellipse
-                key={i}
-                cx="200"
-                cy="200"
-                rx="14"
-                ry="55"
-                fill="none"
-                stroke="#C8A84B"
-                strokeWidth="1"
-                transform={`rotate(${i * 22.5} 200 200) translate(0 -120)`}
-              />
-            ))}
-            {/* Middle ring */}
-            {Array.from({ length: 12 }).map((_, i) => (
-              <ellipse
-                key={i}
-                cx="200"
-                cy="200"
-                rx="10"
-                ry="36"
-                fill="none"
-                stroke="#C8A84B"
-                strokeWidth="0.8"
-                transform={`rotate(${i * 30} 200 200) translate(0 -78)`}
-              />
-            ))}
-            {/* Inner hex */}
-            {Array.from({ length: 6 }).map((_, i) => (
-              <line
-                key={i}
-                x1="200"
-                y1="170"
-                x2="200"
-                y2="230"
-                stroke="#C8A84B"
-                strokeWidth="0.8"
-                transform={`rotate(${i * 60} 200 200)`}
-              />
-            ))}
-            <circle cx="200" cy="200" r="18" fill="none" stroke="#C8A84B" strokeWidth="1" />
-            <circle cx="200" cy="200" r="80" fill="none" stroke="#C8A84B" strokeWidth="0.5" strokeDasharray="4 6" />
-            <circle cx="200" cy="200" r="140" fill="none" stroke="#C8A84B" strokeWidth="0.5" strokeDasharray="2 8" />
-            <circle cx="200" cy="200" r="190" fill="none" stroke="#C8A84B" strokeWidth="0.4" strokeDasharray="1 10" />
-          </svg>
-
-          {/* Counter-rotating inner mandala */}
-          <svg
-            viewBox="0 0 200 200"
-            className="absolute w-[min(40vw,320px)] h-[min(40vw,320px)] opacity-[0.15]"
-            style={{ animation: "mandalaSpinReverse 60s linear infinite" }}
-          >
-            {Array.from({ length: 8 }).map((_, i) => (
-              <ellipse
-                key={i}
-                cx="100"
-                cy="100"
-                rx="8"
-                ry="32"
-                fill="none"
-                stroke="#E5C96B"
-                strokeWidth="1"
-                transform={`rotate(${i * 45} 100 100) translate(0 -50)`}
-              />
-            ))}
-            <circle cx="100" cy="100" r="12" fill="none" stroke="#E5C96B" strokeWidth="1.2" />
-            <circle cx="100" cy="100" r="50" fill="none" stroke="#E5C96B" strokeWidth="0.6" strokeDasharray="3 5" />
-          </svg>
-        </div>
-
-        {/* Floating spice particles */}
-        <SpiceParticles />
-
-        <div className="relative z-10 max-w-3xl mx-auto">
-          {/* Logo */}
-          <div className="mb-8 flex justify-center">
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
+          <div className="mb-6 flex justify-center">
             <Image
               src="/logo.png"
-              alt="Hamaara Indian Kitchen"
-              width={160}
-              height={160}
-              className="drop-shadow-2xl"
+              alt="HAMAARA Indian Kitchen"
+              width={140}
+              height={140}
+              className="drop-shadow-xl"
               priority
             />
           </div>
 
+          <p className="text-xs tracking-[0.2em] uppercase text-[#C84800] mb-3">
+            HAMAARA Kitchen
+          </p>
           <h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-[#3D1C0D] mb-3 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#3D1C0D] mb-4 leading-tight"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Hamaara
+            Discover Everything We Offer
           </h1>
-          <p className="text-xl sm:text-2xl text-[#5C3A20] tracking-[0.25em] uppercase mb-6 opacity-80">
-            Indian Kitchen
+          <p className="text-[#5C3A20] text-lg max-w-2xl mx-auto">
+            From a Pan-Indian menu to Happy Hour and event catering, explore
+            the complete HAMAARA experience in one place.
           </p>
-
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-16 bg-[#C8A84B]/50" />
-            <div className="w-2 h-2 rounded-full bg-[#C8A84B]" />
-            <div className="h-px w-16 bg-[#C8A84B]/50" />
-          </div>
-
-          <p
-            className="text-2xl sm:text-3xl text-[#3D1C0D] mb-3"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
-          >
-            One India, Many Cultures, One Table
-          </p>
-          <p className="text-[#5C3A20] mb-10 text-lg">
-            A culinary journey across India, right here in Santa Clara, CA
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={ORDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-[#C8A84B] hover:bg-[#E5C96B] text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200 shadow-lg"
-            >
-              Order Online
-            </a>
-            <Link
-              href="/menu"
-              className="px-8 py-4 border border-[#3D1C0D]/60 hover:border-[#3D1C0D] text-[#3D1C0D] hover:bg-[#3D1C0D]/10 font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
-            >
-              View Menu
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ── Tagline Banner (Marquee) ── */}
       <section className="bg-[#C8A84B] py-4 overflow-hidden">
         <div className="marquee-track select-none" aria-hidden>
           {[...Array(2)].map((_, pass) => (
             <span key={pass} className="flex items-center gap-0">
               {[
-                "Authentic",
-                "Homestyle",
-                "Soulful",
-                "Indian Cuisine",
-                "No Seed Oils",
-                "No MSG",
-                "190+ Dishes",
-                "Four Regional Cuisines",
+                "Pan-Indian Menu",
+                "South",
+                "North",
+                "East",
+                "West",
+                "Happy Hour",
+                "Catering",
                 "Santa Clara, CA",
               ].map((word) => (
                 <span
@@ -232,82 +122,120 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats ── */}
-      <section className="py-14 px-4" style={{ background: "#F2EDE4" }}>
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {highlights.map((h, i) => (
-            <ScrollReveal key={h.label} delay={i * 120}>
-              <p
-                className="text-4xl font-bold text-[#C84800] mb-1"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
-              >
-                {h.target !== null ? (
-                  <AnimatedCounter target={h.target} suffix={h.suffix} />
-                ) : (
-                  h.value
-                )}
-              </p>
-              <p className="text-xs text-gray-500 tracking-widest uppercase">
-                {h.label}
-              </p>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Quote ── */}
-      <section className="py-20 px-6 text-center" style={{ background: "#E8DFD0" }}>
-        <ScrollReveal>
-          <blockquote
-            className="text-2xl sm:text-3xl lg:text-4xl font-medium max-w-3xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-playfair), serif", color: "#3A2A1A" }}
-          >
-            &ldquo;People who love to eat are always the best people&rdquo;
-          </blockquote>
-          <p className="mt-5 text-sm tracking-widest uppercase" style={{ color: "#C84800" }}>
-            — Julia Child
-          </p>
-        </ScrollReveal>
-      </section>
-
-      {/* ── India Regions ── */}
-      <IndiaRegions />
-
-      {/* ── Philosophy ── */}
-      <section className="py-20 px-6" style={{ background: "#F2EDE4" }}>
-        <div className="max-w-5xl mx-auto">
+      <section id="offerings" className="py-16 px-6" style={{ background: "#F2EDE4" }}>
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "#C84800" }}>
-                Our Promise
+            <div className="text-center mb-10">
+              <p className="text-xs tracking-[0.2em] uppercase text-[#C84800] mb-2">
+                What We Offer
               </p>
               <h2
-                className="text-3xl sm:text-4xl font-bold"
-                style={{ fontFamily: "var(--font-playfair), serif", color: "#3A2A1A" }}
+                className="text-3xl sm:text-4xl font-bold text-[#3A2A1A]"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                Real Food. Real Ingredients.
+                Three Experiences, Equal Spotlight
               </h2>
-              <div className="gold-divider mt-4" />
+              <p className="mt-3 text-[#5C3A20]">
+                Choose what you need today: full menu, happy hour, or catering.
+              </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {philosophyPoints.map((p, i) => (
-              <ScrollReveal key={p.label} delay={i * 100}>
-                <div className="flex flex-col items-center text-center p-6 rounded-xl border transition-colors"
-                  style={{ background: "#EDE5D8", borderColor: "rgba(200,72,0,0.15)" }}>
-                  <span className="text-3xl mb-3">{p.icon}</span>
-                  <span className="text-sm font-medium leading-snug" style={{ color: "#3A2A1A" }}>
-                    {p.label}
-                  </span>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
+            {offerings.map((offering, idx) => (
+              <ScrollReveal key={offering.title} delay={idx * 110}>
+                <article className="h-full rounded-2xl border border-[#C8A84B]/30 bg-[#F8F4ED] shadow-sm overflow-hidden flex flex-col">
+                  <div className="relative w-full aspect-[16/10] bg-[#EDE5D8]">
+                    {offering.imageSrc ? (
+                      <Image
+                        src={offering.imageSrc}
+                        alt={offering.imageAlt}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                        priority={idx === 0}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-sm uppercase tracking-[0.18em] text-[#8A6A4A]">
+                        {offering.placeholderLabel}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-6 flex flex-col h-full">
+                    <h3
+                      className="text-2xl font-bold text-[#3A2A1A] mb-3"
+                      style={{ fontFamily: "var(--font-playfair), serif" }}
+                    >
+                      {offering.title}
+                    </h3>
+                    <p className="text-[#5C3A20] leading-relaxed">
+                      {offering.description}
+                    </p>
+
+                    {offering.cuisines.length > 0 && (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {offering.cuisines.map((cuisine) => (
+                          <span
+                            key={cuisine}
+                            className="inline-flex items-center px-3 py-1 rounded-full text-xs uppercase tracking-[0.16em] bg-[#EDE5D8] text-[#6B4728]"
+                          >
+                            {cuisine}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    {offering.cuisines.length > 0 && (
+                      <div className="mt-4 grid grid-cols-4 gap-2">
+                        {menuCuisineImages.map((item) => (
+                          <div
+                            key={item.label}
+                            className="relative aspect-square rounded-md overflow-hidden bg-[#E5DACA]"
+                          >
+                            <Image
+                              src={item.src}
+                              alt={`${item.label} Indian cuisine`}
+                              fill
+                              className="object-cover"
+                              sizes="80px"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-6 pt-2">
+                      <Link
+                        href={offering.href}
+                        className="inline-flex px-5 py-3 rounded-md border border-[#3D1C0D]/30 text-[#3D1C0D] hover:bg-[#3D1C0D]/10 font-semibold text-xs tracking-[0.16em] uppercase transition-colors duration-200"
+                      >
+                        {offering.cta}
+                      </Link>
+                    </div>
+                  </div>
+                </article>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      <section className="py-20 px-6 text-center" style={{ background: "#E8DFD0" }}>
+        <ScrollReveal>
+          <blockquote
+            className="text-2xl sm:text-3xl lg:text-4xl font-medium max-w-3xl mx-auto leading-relaxed"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#3A2A1A" }}
+          >
+            &ldquo;One kitchen for everyday dining, happy-hour evenings, and
+            celebrations of every size.&rdquo;
+          </blockquote>
+          <p className="mt-5 text-sm tracking-widest uppercase" style={{ color: "#C84800" }}>
+            HAMAARA Kitchen • Santa Clara
+          </p>
+        </ScrollReveal>
+      </section>
+
       <section className="py-20 px-6 text-center" style={{ background: "#F2EDE4" }}>
         <ScrollReveal>
           <div className="max-w-2xl mx-auto">
@@ -315,11 +243,11 @@ export default function Home() {
               className="text-3xl sm:text-4xl font-bold text-[#1E1829] mb-4"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
-              Ready to experience the taste of India?
+              Ready to explore all offerings?
             </h2>
             <p className="text-gray-600 mb-8">
-              Order online for pickup or dine with us at 4300 Great America
-              Pkwy, Suite 156, Santa Clara.
+              Start with menu favorites, discover happy-hour specials, or plan
+              your next event with our catering team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -331,10 +259,10 @@ export default function Home() {
                 Order Online
               </a>
               <Link
-                href="/catering"
+                href="#offerings"
                 className="px-8 py-4 border-2 border-[#1E1829] hover:bg-[#1E1829] hover:text-white text-[#1E1829] font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
               >
-                Catering Inquiry
+                Explore All Offerings
               </Link>
             </div>
           </div>

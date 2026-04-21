@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Catering | Hamaara Indian Kitchen",
+  title: "Catering | HAMAARA Indian Kitchen",
   description:
-    "Hamaara Indian Kitchen offers catering for weddings, corporate lunches, dosa parties, and more. Contact us on WhatsApp to plan your event.",
+    "HAMAARA Indian Kitchen offers catering for weddings, corporate lunches, dosa parties, and more. Contact us on WhatsApp to plan your event.",
 };
 
 const cateringServices = [

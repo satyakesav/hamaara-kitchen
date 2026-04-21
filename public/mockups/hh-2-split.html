@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Hour – Option 2: Split Bites & Sips</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#2A1F0E;color:#fff;font-family:'Inter',sans-serif;min-height:100vh}
+
+  /* Top banner */
+  .top-banner{background:linear-gradient(90deg,#8B4000,#C8A84B,#8B4000);padding:10px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#1A0F00}
+
+  /* Header */
+  .header{display:flex;align-items:center;justify-content:space-between;padding:28px 40px;border-bottom:1px solid rgba(200,168,75,0.15)}
+  .header-brand{font-family:'Playfair Display',serif;font-size:22px;color:#C8A84B;font-style:italic}
+  .header-brand span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#6B5030;font-style:normal;margin-top:2px}
+  .timer-pill{display:flex;align-items:center;gap:12px;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);border-radius:9999px;padding:10px 20px}
+  .timer-dot{width:8px;height:8px;border-radius:50%;background:#C8A84B;animation:pulse 1.5s infinite;flex-shrink:0}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .timer-text{font-size:12px;color:#C8A84B;font-weight:600}
+  .timer-countdown{font-size:16px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+  .header-hours{text-align:right}
+  .header-hours-label{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#6B5030;margin-bottom:2px}
+  .header-hours-time{font-family:'Playfair Display',serif;font-size:18px;color:#F5EDE0}
+
+  /* Main title */
+  .title-section{text-align:center;padding:40px 40px 32px}
+  .title-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#C8A84B;margin-bottom:12px}
+  .title-main{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;color:#fff;line-height:.9;margin-bottom:8px}
+  .title-main em{color:#C8A84B;font-style:italic}
+  .title-sub{font-size:13px;color:#6B5030}
+
+  /* Split layout */
+  .split{display:grid;grid-template-columns:1fr auto 1fr;gap:0;max-width:1200px;margin:0 auto;padding:0 40px 60px}
+  .divider-vert{width:1px;background:linear-gradient(180deg,transparent,rgba(200,168,75,0.3) 20%,rgba(200,168,75,0.3) 80%,transparent);margin:0 40px;position:relative;display:flex;align-items:center;justify-content:center}
+  .divider-vert::after{content:'✦';position:absolute;background:#2A1F0E;padding:8px 0;color:#C8A84B;font-size:14px}
+
+  /* Column header */
+  .col-header{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(200,168,75,0.15)}
+  .col-header-icon{font-size:24px}
+  .col-header-title{font-family:'Playfair Display',serif;font-size:28px;color:#C8A84B}
+
+  /* Sub section */
+  .sub-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#6B5030;margin-bottom:12px;margin-top:20px}
+  .sub-label:first-of-type{margin-top:0}
+
+  /* Item rows with image */
+  .item-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+  .item-row:last-child{border:none}
+  .item-img{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0}
+  .item-name{font-size:13px;font-weight:500;color:#F5EDE0}
+
+  /* Bev cards */
+  .bev-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+  .bev-card{background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.12);border-radius:12px;overflow:hidden}
+  .bev-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .bev-card-name{padding:10px 12px;font-size:12px;font-weight:500;color:#F5EDE0}
+  .bev-card-sub{padding:0 12px 10px;font-size:10px;color:#6B5030;letter-spacing:.1em;text-transform:uppercase}
+
+  .design-label{position:fixed;top:12px;right:12px;background:#C8A84B;color:#1A0F00;font-weight:700;font-size:11px;padding:6px 14px;border-radius:20px;z-index:99}
+</style>
+</head>
+<body>
+<div class="design-label">Option 2 — Split Bites & Sips</div>
+
+<div class="top-banner">✦ Happy Hour Every Evening · 4 PM – 9 PM · Dine In Only ✦</div>
+
+<div class="header">
+  <div class="header-brand">Hamaara Kitchen <span>Indian Kitchen · Santa Clara</span></div>
+  <div class="timer-pill">
+    <div class="timer-dot"></div>
+    <div>
+      <div class="timer-text">Ending in</div>
+      <div class="timer-countdown">02:34:17</div>
+    </div>
+  </div>
+  <div class="header-hours">
+    <div class="header-hours-label">Happy Hour</div>
+    <div class="header-hours-time">4 PM – 9 PM</div>
+  </div>
+</div>
+
+<div class="title-section">
+  <div class="title-eyebrow">Evening Specials</div>
+  <div class="title-main">Happy <em>Hour</em></div>
+  <div class="title-sub">Handcrafted bites & refreshing sips, every evening</div>
+</div>
+
+<div class="split">
+  <!-- Left: Bites -->
+  <div>
+    <div class="col-header">
+      <span class="col-header-icon">🍢</span>
+      <span class="col-header-title">Bites</span>
+    </div>
+
+    <div class="sub-label">Vegetarian</div>
+    <div class="item-row"><img class="item-img" src="/images/menu/momos.jpg"><div class="item-name">Veg Momos</div></div>
+    <div class="item-row"><img class="item-img" src="/images/menu/vada.jpg"><div class="item-name">Masala Vada</div></div>
+    <div class="item-row"><div class="item-img" style="background:#3D2510;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px">🧅</div><div class="item-name">Onion Pakoda</div></div>
+    <div class="item-row"><div class="item-img" style="background:#3D2510;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px">🌶️</div><div class="item-name">Mirchi Bajji</div></div>
+    <div class="item-row"><div class="item-img" style="background:#3D2510;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px">🫓</div><div class="item-name">Pungulu</div></div>
+    <div class="item-row"><div class="item-img" style="background:#3D2510;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px">🫔</div><div class="item-name">Somas (Onion/Potato)</div></div>
+
+    <div class="sub-label">Non-Vegetarian</div>
+    <div class="item-row"><img class="item-img" src="/images/menu/eggpuff.jpg"><div class="item-name">Egg Puff</div></div>
+    <div class="item-row"><img class="item-img" src="/images/menu/chickenpuff.jpg"><div class="item-name">Chicken Puff</div></div>
+    <div class="item-row"><img class="item-img" src="/images/menu/chickenpakora.jpg"><div class="item-name">Chicken Pakora</div></div>
+  </div>
+
+  <div class="divider-vert"></div>
+
+  <!-- Right: Sips -->
+  <div>
+    <div class="col-header">
+      <span class="col-header-icon">🥤</span>
+      <span class="col-header-title">Sips</span>
+    </div>
+
+    <div class="sub-label">Hot</div>
+    <div class="bev-cards">
+      <div class="bev-card"><img src="/images/menu/tea.jpg"><div class="bev-card-name">Filter Coffee</div><div class="bev-card-sub">South Indian</div></div>
+      <div class="bev-card"><img src="/images/menu/tea.jpg"><div class="bev-card-name">Masala Tea</div><div class="bev-card-sub">Spiced</div></div>
+      <div class="bev-card"><img src="/images/menu/tea.jpg"><div class="bev-card-name">Ginger Tea</div><div class="bev-card-sub">Fresh Brewed</div></div>
+    </div>
+
+    <div class="sub-label" style="margin-top:24px">Cold</div>
+    <div class="bev-cards">
+      <div class="bev-card"><img src="/images/menu/juice.jpg"><div class="bev-card-name">Fruit Juices</div><div class="bev-card-sub">Seasonal</div></div>
+      <div class="bev-card"><img src="/images/menu/rosemilk.jpg"><div class="bev-card-name">Rose Milk</div><div class="bev-card-sub">Chilled</div></div>
+      <div class="bev-card"><img src="/images/menu/lassi.jpg"><div class="bev-card-name">Mango Lassi</div><div class="bev-card-sub">Creamy</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

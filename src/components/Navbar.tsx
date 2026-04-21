@@ -52,7 +52,7 @@ export default function Navbar() {
             <div className="relative w-14 h-14">
               <Image
                 src="/logo.png"
-                alt="Hamaara Indian Kitchen"
+                alt="HAMAARA Indian Kitchen"
                 fill
                 sizes="56px"
                 className="object-contain"
@@ -63,7 +63,7 @@ export default function Navbar() {
             </div>
             <div className="leading-tight text-center">
               <span className="block text-[#3D1C0D] font-bold text-lg tracking-wide uppercase">
-                Hamaara
+                HAMAARA
               </span>
               <span className="block text-xs text-[#5C3A20] tracking-widest uppercase">
                 Indian Kitchen

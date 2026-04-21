@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Hour – Option 1: Amber Glow</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#1A0F00;color:#fff;font-family:'Inter',sans-serif;min-height:100vh}
+
+  /* Header */
+  .hero{position:relative;padding:56px 32px 48px;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#3D1F00 0%,#1A0F00 70%)}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8A84B' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+
+  .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);color:#C8A84B;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:8px 20px;border-radius:9999px;margin-bottom:20px}
+  .badge-dot{width:8px;height:8px;border-radius:50%;background:#C8A84B;animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+  .hero h1{font-family:'Playfair Display',serif;font-size:64px;font-weight:900;font-style:italic;line-height:.95;margin-bottom:12px}
+  .hero h1 span{color:#C8A84B}
+  .hero-sub{font-size:14px;color:#9C7A40;letter-spacing:.15em;text-transform:uppercase;margin-bottom:28px}
+
+  /* Countdown */
+  .countdown{display:inline-flex;gap:4px;align-items:center;background:rgba(200,168,75,0.08);border:1px solid rgba(200,168,75,0.2);border-radius:12px;padding:16px 28px;margin-bottom:0}
+  .countdown-label{font-size:10px;color:#9C7A40;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;text-align:center}
+  .time-block{text-align:center;padding:0 12px}
+  .time-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#C8A84B;line-height:1}
+  .time-label{font-size:9px;color:#6B5030;letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
+  .time-sep{font-size:28px;color:#C8A84B;opacity:.4;padding-bottom:8px}
+
+  /* Section label */
+  .section-label{text-align:center;padding:40px 0 24px}
+  .section-label .eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#C8A84B;margin-bottom:8px}
+  .section-label h2{font-family:'Playfair Display',serif;font-size:32px;color:#fff}
+
+  /* Grid */
+  .grid{max-width:1100px;margin:0 auto;padding:0 32px 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+
+  .card{background:#241408;border:1px solid rgba(200,168,75,0.12);border-radius:16px;overflow:hidden;transition:all .2s}
+  .card:hover{transform:translateY(-4px);border-color:rgba(200,168,75,0.35);box-shadow:0 16px 40px rgba(200,168,75,0.1)}
+  .card-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+  .card-img-placeholder{width:100%;aspect-ratio:1/1;background:#2D1A08;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .card-body{padding:14px}
+  .card-tag{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C8A84B;margin-bottom:6px}
+  .card-name{font-size:14px;font-weight:600;color:#F5EDE0;line-height:1.3}
+
+  /* Beverages */
+  .bev-grid{max-width:1100px;margin:0 auto;padding:0 32px 60px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .bev-section{background:#241408;border:1px solid rgba(200,168,75,0.12);border-radius:20px;overflow:hidden}
+  .bev-header{padding:20px 24px;border-bottom:1px solid rgba(200,168,75,0.1);display:flex;align-items:center;gap:10px}
+  .bev-header-icon{font-size:20px}
+  .bev-header-title{font-family:'Playfair Display',serif;font-size:20px;color:#C8A84B}
+  .bev-items{padding:8px 0}
+  .bev-item{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1px solid rgba(255,255,255,0.04);transition:background .15s}
+  .bev-item:last-child{border:none}
+  .bev-item:hover{background:rgba(200,168,75,0.04)}
+  .bev-item img{width:48px;height:48px;border-radius:8px;object-fit:cover;flex-shrink:0}
+  .bev-item-name{font-size:13px;font-weight:500;color:#F5EDE0}
+
+  .divider{max-width:1100px;margin:0 auto 0;padding:0 32px;display:flex;align-items:center;gap:16px}
+  .divider-line{flex:1;height:1px;background:rgba(200,168,75,0.12)}
+  .divider-text{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4B3018}
+
+  .design-label{position:fixed;top:12px;right:12px;background:#C8A84B;color:#1A0F00;font-weight:700;font-size:11px;padding:6px 14px;border-radius:20px;z-index:99}
+</style>
+</head>
+<body>
+<div class="design-label">Option 1 — Amber Glow</div>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span> Happening Now</div>
+  <h1>Happy <span>Hour</span></h1>
+  <div class="hero-sub">Every Evening · 4 PM – 9 PM</div>
+  <div class="countdown-label">Ends in</div>
+  <div class="countdown">
+    <div class="time-block"><div class="time-num">02</div><div class="time-label">Hours</div></div>
+    <div class="time-sep">:</div>
+    <div class="time-block"><div class="time-num">34</div><div class="time-label">Mins</div></div>
+    <div class="time-sep">:</div>
+    <div class="time-block"><div class="time-num">17</div><div class="time-label">Secs</div></div>
+  </div>
+</div>
+
+<!-- Appetizers -->
+<div class="section-label">
+  <div class="eyebrow">🍢 Bites</div>
+  <h2>Appetizers</h2>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <img class="card-img" src="/images/menu/momos.jpg" alt="Veg Momos">
+    <div class="card-body"><div class="card-tag">Vegetarian</div><div class="card-name">Veg Momos</div></div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="/images/menu/vada.jpg" alt="Masala Vada">
+    <div class="card-body"><div class="card-tag">Vegetarian</div><div class="card-name">Masala Vada</div></div>
+  </div>
+  <div class="card">
+    <div class="card-img-placeholder">🧅</div>
+    <div class="card-body"><div class="card-tag">Vegetarian</div><div class="card-name">Onion Pakoda</div></div>
+  </div>
+  <div class="card">
+    <div class="card-img-placeholder">🌶️</div>
+    <div class="card-body"><div class="card-tag">Vegetarian</div><div class="card-name">Mirchi Bajji</div></div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="/images/menu/eggpuff.jpg" alt="Egg Puff">
+    <div class="card-body"><div class="card-tag">Non-Veg</div><div class="card-name">Egg Puff</div></div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="/images/menu/chickenpuff.jpg" alt="Chicken Puff">
+    <div class="card-body"><div class="card-tag">Non-Veg</div><div class="card-name">Chicken Puff</div></div>
+  </div>
+  <div class="card">
+    <img class="card-img" src="/images/menu/chickenpakora.jpg" alt="Chicken Pakora">
+    <div class="card-body"><div class="card-tag">Non-Veg</div><div class="card-name">Chicken Pakora</div></div>
+  </div>
+  <div class="card">
+    <div class="card-img-placeholder">🥚</div>
+    <div class="card-body"><div class="card-tag">Non-Veg</div><div class="card-name">Egg Bonda</div></div>
+  </div>
+</div>
+
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-text">🥤 Sips</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- Beverages -->
+<div class="section-label">
+  <div class="eyebrow">Drinks</div>
+  <h2>Beverages</h2>
+</div>
+
+<div class="bev-grid">
+  <div class="bev-section">
+    <div class="bev-header"><span class="bev-header-icon">☕</span><span class="bev-header-title">Hot Drinks</span></div>
+    <div class="bev-items">
+      <div class="bev-item"><img src="/images/menu/tea.jpg" alt="Tea"><div class="bev-item-name">South Indian Filter Coffee</div></div>
+      <div class="bev-item"><img src="/images/menu/tea.jpg" alt="Tea"><div class="bev-item-name">Masala Tea</div></div>
+      <div class="bev-item"><img src="/images/menu/tea.jpg" alt="Tea"><div class="bev-item-name">Ginger Tea</div></div>
+    </div>
+  </div>
+  <div class="bev-section">
+    <div class="bev-header"><span class="bev-header-icon">🧊</span><span class="bev-header-title">Cold Drinks</span></div>
+    <div class="bev-items">
+      <div class="bev-item"><img src="/images/menu/juice.jpg" alt="Juice"><div class="bev-item-name">Fruit Juices</div></div>
+      <div class="bev-item"><img src="/images/menu/rosemilk.jpg" alt="Rose Milk"><div class="bev-item-name">Rose Milk</div></div>
+      <div class="bev-item"><img src="/images/menu/lassi.jpg" alt="Lassi"><div class="bev-item-name">Mango Lassi</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

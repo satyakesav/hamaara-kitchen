@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 // Happy hour runs 3 PM – 6 PM daily
 const HAPPY_HOUR_START = 15; // 3 PM
 const HAPPY_HOUR_END = 18;   // 6 PM
 
-function getCountdownState() {
+type CountdownState = { active: boolean; remaining: number };
+
+function computeCountdownState(): CountdownState {
   const now = new Date();
   const h = now.getHours();
   const m = now.getMinutes();
@@ -17,18 +19,38 @@ function getCountdownState() {
   const endSeconds = HAPPY_HOUR_END * 3600;
 
   if (totalSecondsNow >= startSeconds && totalSecondsNow < endSeconds) {
-    // Currently in happy hour — countdown to end
-    const remaining = endSeconds - totalSecondsNow;
-    return { active: true, remaining };
+    return { active: true, remaining: endSeconds - totalSecondsNow };
   } else if (totalSecondsNow < startSeconds) {
-    // Before happy hour today
-    const remaining = startSeconds - totalSecondsNow;
-    return { active: false, remaining };
+    return { active: false, remaining: startSeconds - totalSecondsNow };
   } else {
-    // After happy hour — countdown to tomorrow's start
-    const remaining = 86400 - totalSecondsNow + startSeconds;
-    return { active: false, remaining };
+    return { active: false, remaining: 86400 - totalSecondsNow + startSeconds };
   }
+}
+
+// Module-level cached snapshot so useSyncExternalStore receives a stable
+// reference between ticks and doesn't loop during render.
+let cachedSnapshot: CountdownState = computeCountdownState();
+
+function subscribe(callback: () => void) {
+  const interval = setInterval(() => {
+    const next = computeCountdownState();
+    if (
+      next.active !== cachedSnapshot.active ||
+      next.remaining !== cachedSnapshot.remaining
+    ) {
+      cachedSnapshot = next;
+      callback();
+    }
+  }, 1000);
+  return () => clearInterval(interval);
+}
+
+function getSnapshot(): CountdownState {
+  return cachedSnapshot;
+}
+
+function getServerSnapshot(): CountdownState | null {
+  return null;
 }
 
 function formatTime(seconds: number) {
@@ -43,13 +65,7 @@ function formatTime(seconds: number) {
 }
 
 export default function HappyHourCountdown() {
-  const [state, setState] = useState<{ active: boolean; remaining: number } | null>(null);
-
-  useEffect(() => {
-    setState(getCountdownState());
-    const interval = setInterval(() => setState(getCountdownState()), 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   if (!state) return null;
 

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu Option 1 — Editorial Magazine Grid</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #3A3530; display: flex; height: 100vh; overflow: hidden; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #302C28;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    overflow-y: auto;
+  }
+  .sidebar-brand {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sidebar-brand h1 { color: #C8A84B; font-size: 18px; font-weight: 700; letter-spacing: 0.04em; }
+  .sidebar-brand p { color: #9C8E7E; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+
+  .search-wrap { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .search-wrap input {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 8px 12px; color: #F5EDE0; font-size: 13px; outline: none;
+  }
+  .search-wrap input::placeholder { color: #9C8E7E; }
+
+  .nav-section { padding: 10px 0; }
+  .nav-label { padding: 8px 20px 4px; font-size: 10px; color: #9C8E7E; letter-spacing: 0.14em; text-transform: uppercase; }
+  .nav-item {
+    padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap-10px;
+    font-size: 13px; color: #9C8E7E; transition: all 0.15s; border-left: 2px solid transparent;
+    gap: 10px;
+  }
+  .nav-item:hover { color: #F5EDE0; background: rgba(255,255,255,0.04); }
+  .nav-item.active { color: #C8A84B; background: rgba(200,168,75,0.08); border-left-color: #C8A84B; }
+  .nav-item .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+  .order-btn {
+    margin: 16px; padding: 11px; background: #C8A84B; color: #1E1829; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 8px;
+    text-align: center; cursor: pointer; margin-top: auto;
+  }
+
+  /* ── Content Panel ── */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+    background: #3A3530;
+  }
+
+  .category-header {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;
+  }
+  .category-header h2 {
+    font-size: 26px; font-weight: 800; color: #F5EDE0; letter-spacing: -0.01em;
+  }
+  .category-header .count {
+    font-size: 12px; color: #9C8E7E; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .subcategory-label {
+    font-size: 11px; color: #C8A84B; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .subcategory-label::after { content: ''; flex: 1; height: 1px; background: rgba(200,168,75,0.2); }
+
+  /* ── Hero Card ── */
+  .hero-card {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+  }
+  .hero-card .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #5C3D2E, #8B5E3C);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 90px;
+  }
+  .hero-card .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+  }
+  .hero-card .hero-info {
+    position: relative; z-index: 2; padding: 20px 24px; width: 100%;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .hero-card .hero-name { font-size: 22px; font-weight: 800; color: #fff; }
+  .hero-card .hero-badge {
+    background: #C8A84B; color: #1E1829; font-size: 10px; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .veg-dot {
+    display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+    margin-right: 6px; flex-shrink: 0; vertical-align: middle;
+  }
+  .hero-card .hero-veg { position: absolute; top: 14px; left: 16px; z-index: 3; }
+
+  /* ── Item Grid ── */
+  .item-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .item-card {
+    background: #302C28;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .item-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .item-card .card-img {
+    height: 110px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 46px;
+    background: linear-gradient(135deg, #3D3028, #4A3A2E);
+  }
+  .item-card .card-body { padding: 10px 12px 12px; display: flex; align-items: center; gap: 8px; }
+  .item-card .card-name { font-size: 13px; font-weight: 600; color: #F5EDE0; line-height: 1.3; }
+
+  /* Non-veg section */
+  .nonveg-grid { margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <h1>Hamaara</h1>
+    <p>Indian Kitchen</p>
+  </div>
+  <div class="search-wrap">
+    <input type="text" placeholder="🔍  Search 190+ dishes…" />
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Tiffins</div>
+    <div class="nav-item"><span class="dot"></span>Idli & Dosa</div>
+    <div class="nav-item"><span class="dot"></span>Vada & Bonda</div>
+    <div class="nav-label">Rice & Biryani</div>
+    <div class="nav-item"><span class="dot"></span>Rice Dishes</div>
+    <div class="nav-item"><span class="dot"></span>Biryani</div>
+    <div class="nav-label">Specials</div>
+    <div class="nav-item active"><span class="dot"></span>Happy Hour</div>
+    <div class="nav-item"><span class="dot"></span>Curries</div>
+    <div class="nav-label">Drinks</div>
+    <div class="nav-item"><span class="dot"></span>Beverages</div>
+  </div>
+  <div class="order-btn">Order Online →</div>
+</nav>
+
+<!-- Content -->
+<div class="content">
+
+  <div class="category-header">
+    <h2>Happy Hour</h2>
+    <span class="count">15 items · 3–6 PM daily</span>
+  </div>
+
+  <!-- Vegetarian -->
+  <div class="subcategory-label">
+    <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block"></span>
+    Vegetarian
+  </div>
+
+  <!-- Hero Card -->
+  <div class="hero-card">
+    <div class="hero-bg">🫓</div>
+    <div class="hero-overlay"></div>
+    <div class="hero-veg"><span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span></div>
+    <div class="hero-info">
+      <div class="hero-name">Mysore Bonda</div>
+      <div class="hero-badge">⭐ Featured</div>
+    </div>
+  </div>
+
+  <!-- 3-col grid -->
+  <div class="item-grid">
+    <div class="item-card">
+      <div class="card-img">🥟</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Veg Momos</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🍽️</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Masala Vada</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🧅</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Onion Pakoda</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🌶️</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Mirchi Bajji</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🫓</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Pungulu</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🥟</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Samosas (Onion/Potato)</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🍌</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Vazhakkai Bajji</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🥬</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Spinach Pakora</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🫘</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#22c55e;border:2px solid #22c55e"></span>
+        <span class="card-name">Soya Pakora</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-Veg -->
+  <div class="subcategory-label nonveg-grid">
+    <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+    Non-Veg
+  </div>
+
+  <!-- Hero Card Non-Veg -->
+  <div class="hero-card" style="margin-bottom:20px">
+    <div class="hero-bg" style="background: linear-gradient(135deg, #4A2020, #7B3030)">🍗</div>
+    <div class="hero-overlay"></div>
+    <div class="hero-veg"><span class="veg-dot" style="background:#ef4444;border:2px solid #ef4444"></span></div>
+    <div class="hero-info">
+      <div class="hero-name">Chicken Pakora</div>
+      <div class="hero-badge">⭐ Featured</div>
+    </div>
+  </div>
+
+  <div class="item-grid">
+    <div class="item-card">
+      <div class="card-img">🥚</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#ef4444;border:2px solid #ef4444"></span>
+        <span class="card-name">Egg Puff</span>
+      </div>
+    </div>
+    <div class="item-card">
+      <div class="card-img">🥐</div>
+      <div class="card-body">
+        <span class="veg-dot" style="background:#ef4444;border:2px solid #ef4444"></span>
+        <span class="card-name">Chicken Puff</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

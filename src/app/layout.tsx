@@ -18,15 +18,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Hamaara Indian Kitchen | Santa Clara, CA",
+  title: "HAMAARA Indian Kitchen | Santa Clara, CA",
   description:
     "A culinary journey across India, right here in Santa Clara. One India, Many Cultures, One Table. Order online or visit us at 4300 Great America Pkwy.",
-  keywords: ["Indian restaurant", "North Indian food", "South Indian food", "Santa Clara", "biryani", "dosa", "Hamaara Kitchen"],
+  keywords: ["Indian restaurant", "North Indian food", "South Indian food", "Santa Clara", "biryani", "dosa", "HAMAARA Kitchen"],
   openGraph: {
-    title: "Hamaara Indian Kitchen",
+    title: "HAMAARA Indian Kitchen",
     description: "One India, Many Cultures, One Table.",
     url: "https://hamarakitchen.com",
-    siteName: "Hamaara Indian Kitchen",
+    siteName: "HAMAARA Indian Kitchen",
     type: "website",
   },
 };

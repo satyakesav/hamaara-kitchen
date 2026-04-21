@@ -4,7 +4,7 @@ const MENU: MenuCategory[] = [
   {
     id: "tiffin",
     name: "Tiffin Treats",
-    emoji: "🫓",
+    emoji: "🥣",
     tagline: "Classic South Indian breakfast, served all day",
     items: [
       { name: "Idly (3 pcs)", description: "Soft steamed rice cakes, chutney & sambar", isVeg: true },
@@ -15,17 +15,33 @@ const MENU: MenuCategory[] = [
       { name: "Mini Idly (12 pcs)", description: "Bite-sized idlies with sambar", isVeg: true },
       { name: "Sambar Idly (2 pcs)", description: "Idlies dipped in hot sambar", isVeg: true },
       { name: "Sambar Vada (2 pcs)", description: "Vadas soaked in sambar", isVeg: true },
-      { name: "Mysore Bonda", isVeg: true },
-      { name: "Pesarattu / Upma Pesarattu", isVeg: true },
-      { name: "Millet Java", isVeg: true },
-      { name: "Egg Dosa", description: "Thin dosa layered with egg", isVeg: false },
       { name: "Omelette", description: "Masala or plain", isVeg: false },
+    ],
+  },
+  {
+    id: "dosa",
+    name: "Dosa Junction",
+    emoji: "🔥",
+    tagline: "Crisp, golden, handcrafted dosas",
+    items: [
+      { name: "Plain Dosa", isVeg: true },
+      { name: "Ghee Dosa", isVeg: true },
+      { name: "Masala Dosa", isVeg: true },
+      { name: "Mysore Masala Dosa", isVeg: true },
+      { name: "Curry Leaf Dosa", isVeg: true },
+      { name: "Green Chilli Dosa", isVeg: true },
+      { name: "Paneer Dosa", isVeg: true },
+      { name: "Benne Dosa", isVeg: true },
+      { name: "Andhra Karam Dosai", isVeg: true },
+      { name: "Chocolate Dosa (Kids Special)", isVeg: true },
+      { name: "Podi Dosa", isVeg: true },
+      { name: "Egg Dosa", description: "Thin dosa layered with egg", isVeg: false },
     ],
   },
   {
     id: "appetizers",
     name: "Appetizers",
-    emoji: "🌶️",
+    emoji: "🍢",
     subSections: [
       {
         title: "Vegetarian",
@@ -39,9 +55,6 @@ const MENU: MenuCategory[] = [
           { name: "Baby Corn Manchurian", description: "Indo-Chinese favorite", isVeg: true },
           { name: "Water Chestnut Fry", description: "Unique, crunchy, premium", isVeg: true },
           { name: "Paneer Schezwan", description: "Spicy Indo-Chinese paneer", isVeg: true },
-          { name: "Momos (5 Pcs / 10 Pcs)", isVeg: true },
-          { name: "Veg Chili Momo (5 Pcs / 10 Pcs)", isVeg: true },
-          { name: "Water Chestnut Manchurian", isVeg: true },
         ],
       },
       {
@@ -51,44 +64,20 @@ const MENU: MenuCategory[] = [
           { name: "Pachi Mirchi Chicken Fry", description: "Green chilli chicken, bold & spicy", isVeg: false },
           { name: "Pachi Mirchi Shrimp Fry", description: "Jumbo shrimp in green chilli masala", isVeg: false },
           { name: "Chicken 65", description: "House special", isVeg: false },
+          { name: "Curry Leaf Chicken", isVeg: false },
           { name: "Dragon Chicken", isVeg: false },
-          { name: "Chicken Sukka", description: "Semi-dry South Indian classic", isVeg: false },
+          { name: "Chicken Chukka", description: "Semi-dry South Indian classic", isVeg: false },
           { name: "Apollo Fish", description: "Tangy Indo-Chinese fish", isVeg: false },
           { name: "Mutton Sukka", description: "Slow-roasted goat with spices", isVeg: false },
           { name: "Chicken Momos (Steamed/Fried)", description: "Himalayan dumplings", isVeg: false },
-          { name: "Egg Puff", isVeg: false },
-          { name: "Chicken Puff", isVeg: false },
-          { name: "Chicken Lollipop (5 Pcs)", isVeg: false },
-          { name: "Chili Chicken", isVeg: false },
-          { name: "Karevapaku Chicken Fry", isVeg: false },
         ],
       },
     ],
   },
   {
-    id: "dosa",
-    name: "Dosa Junction",
-    emoji: "🫔",
-    tagline: "Thin, crispy & made to order",
-    items: [
-      { name: "Plain Dosa", isVeg: true },
-      { name: "Ghee Dosa", isVeg: true },
-      { name: "Masala Dosa", isVeg: true },
-      { name: "Mysore Masala Dosa", isVeg: true },
-      { name: "Curry Leaf Dosa", isVeg: true },
-      { name: "Green Chilli Dosa", isVeg: true },
-      { name: "Paneer Dosa", isVeg: true },
-      { name: "Benne Dosa", isVeg: true },
-      { name: "Andhra Karam Dosa", isVeg: true },
-      { name: "Chocolate Dosa (Kids Special)", isVeg: true },
-      { name: "Podi Dosa", isVeg: true },
-      { name: "Egg Dosa", isVeg: false },
-    ],
-  },
-  {
     id: "veg-curries",
     name: "Veg Curries",
-    emoji: "🥘",
+    emoji: "🍛",
     tagline: "Rich, aromatic gravies",
     items: [
       { name: "Paneer Butter Masala", isVeg: true },
@@ -96,7 +85,6 @@ const MENU: MenuCategory[] = [
       { name: "Kadai Paneer", isVeg: true },
       { name: "Navaratan Kurma", isVeg: true },
       { name: "Veg Kurma", isVeg: true },
-      { name: "Dal Fry", isVeg: true },
     ],
   },
   {
@@ -111,15 +99,12 @@ const MENU: MenuCategory[] = [
       { name: "Chicken Vindaloo", isVeg: false },
       { name: "Lamb Curry", isVeg: false },
       { name: "Shrimp Masala", isVeg: false },
-      { name: "Godavari Chicken Curry", isVeg: false },
-      { name: "Godavari Chepala Pulusu", isVeg: false },
-      { name: "Godavari Shrimp & Eggs Pulusu", isVeg: false },
     ],
   },
   {
     id: "biryani",
-    name: "Biryani",
-    emoji: "🍚",
+    name: "Biryani & Pulao Signatures",
+    emoji: "🍽️",
     tagline: "Slow-cooked, layered perfection",
     subSections: [
       {
@@ -131,8 +116,6 @@ const MENU: MenuCategory[] = [
           { name: "Ambur Soya Biryani", isVeg: true },
           { name: "Pachi Mirchi Paneer Pulao", isVeg: true },
           { name: "Kothimeera Paneer Pulao", isVeg: true },
-          { name: "Labbipet Paneer Biryani", isVeg: true },
-          { name: "Vijayawada Paneer Biryani", isVeg: true },
         ],
       },
       {
@@ -148,8 +131,6 @@ const MENU: MenuCategory[] = [
           { name: "Gongura Chicken Biryani", isVeg: false },
           { name: "Gongura Goat Biryani", isVeg: false },
           { name: "Ghee Roast Goat Biryani", isVeg: false },
-          { name: "Shahi Gosht Biryani", isVeg: false },
-          { name: "RJY Chicken Fry Piece Biryani", isVeg: false },
         ],
       },
     ],
@@ -157,7 +138,7 @@ const MENU: MenuCategory[] = [
   {
     id: "meals",
     name: "Meals / Thali",
-    emoji: "🍽️",
+    emoji: "🍱",
     tagline: "A complete spread, every time",
     subSections: [
       {
@@ -166,7 +147,6 @@ const MENU: MenuCategory[] = [
         items: [
           {
             name: "Regular Veg Meals",
-            description: "Variety rice, rottipachadi, veg fry, veg curry, dal, curd",
             isVeg: true,
           },
           { name: "Special Veg Meals (Weekend)", isVeg: true },
@@ -198,24 +178,20 @@ const MENU: MenuCategory[] = [
     id: "snacks",
     name: "Evening Snacks",
     emoji: "🍟",
-    tagline: "4 PM – 9 PM · Fried fresh to order",
+    tagline: "4 PM – 9 PM",
     items: [
-      { name: "Masala Vada", isVeg: true },
       { name: "Onion Pakoda", isVeg: true },
       { name: "Mirchi Bajji", isVeg: true },
       { name: "Pungulu", isVeg: true },
       { name: "Samosas (Onion/Potato)", isVeg: true },
       { name: "Vazhakkai Bajji", isVeg: true },
-      { name: "Spinach Pakora", isVeg: true },
-      { name: "Soya Pakora", isVeg: true },
-      { name: "Challa Baji", isVeg: true },
       { name: "Egg Bonda", isVeg: false },
     ],
   },
   {
     id: "bread-rice",
     name: "Bread & Rice",
-    emoji: "🫓",
+    emoji: "🍞",
     tagline: "Baked fresh in the tandoor",
     items: [
       { name: "Plain Naan / Butter Naan", isVeg: true },
@@ -230,7 +206,7 @@ const MENU: MenuCategory[] = [
   {
     id: "desserts",
     name: "Desserts",
-    emoji: "🍮",
+    emoji: "🍰",
     tagline: "Sweet endings",
     items: [
       { name: "Gulab Jamun", isVeg: true },
@@ -242,7 +218,7 @@ const MENU: MenuCategory[] = [
   {
     id: "drinks",
     name: "Drinks",
-    emoji: "☕",
+    emoji: "🥤",
     tagline: "Hot & cold, brewed with care",
     items: [
       { name: "Filter Coffee", isVeg: true },
