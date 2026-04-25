@@ -205,12 +205,12 @@ export default function AboutPage() {
               <div className="text-3xl mb-3">📸</div>
               <h3 className="font-bold text-[#1E1829] mb-2">Instagram</h3>
               <a
-                href="https://www.instagram.com/hamaara.indian.kitchen__"
+                href="https://www.instagram.com/hamaara.indian.kitchen_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#C8A84B] hover:text-[#1E1829] transition-colors text-sm font-medium break-all"
               >
-                @hamaara.indian.kitchen__
+                @hamaara.indian.kitchen_
               </a>
             </div>
           </div>
