@@ -168,7 +168,7 @@ export default function AboutPage() {
             Visit Us in Santa Clara
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
               <div className="text-3xl mb-3">📍</div>
               <h3 className="font-bold text-[#1E1829] mb-2">Address</h3>
@@ -198,6 +198,19 @@ export default function AboutPage() {
                 className="text-[#C8A84B] hover:text-[#1E1829] transition-colors text-sm font-medium break-all"
               >
                 hamaaraindiankitchensc@gmail.com
+              </a>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+              <div className="text-3xl mb-3">📸</div>
+              <h3 className="font-bold text-[#1E1829] mb-2">Instagram</h3>
+              <a
+                href="https://www.instagram.com/hamaara.indian.kitchen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C8A84B] hover:text-[#1E1829] transition-colors text-sm font-medium break-all"
+              >
+                @hamaara.indian.kitchen
               </a>
             </div>
           </div>
