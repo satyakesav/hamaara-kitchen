@@ -183,10 +183,10 @@ export default function AboutPage() {
               <div className="text-3xl mb-3">📞</div>
               <h3 className="font-bold text-[#1E1829] mb-2">Phone</h3>
               <a
-                href="tel:+14085644083"
+                href="tel:+14084725923"
                 className="text-[#C8A84B] hover:text-[#1E1829] transition-colors text-sm font-medium"
               >
-                +1 (408) 564-4083
+                +1 (408) 472-5923
               </a>
             </div>
 
@@ -194,10 +194,10 @@ export default function AboutPage() {
               <div className="text-3xl mb-3">✉️</div>
               <h3 className="font-bold text-[#1E1829] mb-2">Email</h3>
               <a
-                href="mailto:Balajimesssc@gmail.com"
+                href="mailto:hamaaraindiankitchensc@gmail.com"
                 className="text-[#C8A84B] hover:text-[#1E1829] transition-colors text-sm font-medium break-all"
               >
-                Balajimesssc@gmail.com
+                hamaaraindiankitchensc@gmail.com
               </a>
             </div>
           </div>

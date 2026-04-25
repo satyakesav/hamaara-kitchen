@@ -55,17 +55,15 @@ const offerings = [
 export default function Home() {
   return (
     <>
-      <section
-        className="relative px-6 pt-16 pb-12 lg:pt-20 lg:pb-16"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, #FDF9F4 0%, #FAF6F0 60%, #F5EEE4 100%)",
-        }}
-      >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
-          <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-[#C8A84B]/5 blur-3xl" />
-        </div>
+      <section className="relative px-6 pt-16 pb-12 lg:pt-20 lg:pb-16 overflow-hidden">
+        <Image
+          src="/images/home/cover-image.png"
+          alt="Hamaara Kitchen cover"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-[#1A0A00]/55" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <div className="mb-6 flex justify-center">
@@ -79,16 +77,16 @@ export default function Home() {
             />
           </div>
 
-          <p className="text-xs tracking-[0.2em] uppercase text-[#C84800] mb-3">
+          <p className="text-xs tracking-[0.2em] uppercase text-[#F5C97A] mb-3">
             HAMAARA Kitchen
           </p>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#3D1C0D] mb-4 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FDF9F4] mb-4 leading-tight"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Discover Everything We Offer
           </h1>
-          <p className="text-[#5C3A20] text-lg max-w-2xl mx-auto">
+          <p className="text-[#EDE0CC] text-lg max-w-2xl mx-auto">
             From a Pan-Indian menu to Happy Hour and event catering, explore
             the complete HAMAARA experience in one place.
           </p>
