@@ -37,8 +37,8 @@ const ORDER_URL =
   "https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212";
 
 const GOLD = "#C8A84B";
-const SIDEBAR_BG = "#FAF6F0";
-const CREAM = "#F2EDE4";
+const SIDEBAR_BG = "#FFFFFF";
+const CREAM = "#FFFFFF";
 const CHARCOAL_TEXT = "#2A2520";
 const MUTED_TEXT = "#7A6E64";
 const RULE_COLOR = "#D6CEC4";

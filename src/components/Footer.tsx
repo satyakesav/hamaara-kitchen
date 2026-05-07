@@ -69,9 +69,24 @@ export default function Footer() {
             <h3 className="text-[#C8A84B] font-semibold text-sm tracking-widest uppercase mb-5">
               Opening Hours
             </h3>
-            <div className="text-sm text-gray-400 space-y-1.5">
-              {/* TODO: Update opening hours */}
-              <p className="text-gray-500 italic">Hours coming soon</p>
+            <div className="text-sm space-y-1.5">
+              {[
+                { day: "Monday", hours: null },
+                { day: "Tuesday", hours: "8 AM – 10 PM" },
+                { day: "Wednesday", hours: "8 AM – 10 PM" },
+                { day: "Thursday", hours: "8 AM – 10 PM" },
+                { day: "Friday", hours: "8 AM – 10 PM" },
+                { day: "Saturday", hours: "8 AM – 10 PM" },
+                { day: "Sunday", hours: "8 AM – 10 PM" },
+              ].map(({ day, hours }) => (
+                <div key={day} className="flex items-baseline justify-between">
+                  <span className="text-gray-400">{day}</span>
+                  {hours
+                    ? <span className="text-[#C8A84B] font-medium tracking-wide">{hours}</span>
+                    : <span className="text-gray-600 italic text-xs">Closed</span>
+                  }
+                </div>
+              ))}
             </div>
           </div>
 

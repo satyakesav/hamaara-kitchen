@@ -50,7 +50,7 @@ export default function CateringPage() {
       </section>
 
       {/* ── Services + CTA ── */}
-      <section className="bg-[#F8F5EE] py-20 px-6">
+      <section className="bg-[#FFFFFF] py-20 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           {/* Services List */}
           <div>

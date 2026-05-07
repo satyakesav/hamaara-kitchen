@@ -55,17 +55,18 @@ const offerings = [
 export default function Home() {
   return (
     <>
-      <section className="relative px-6 pt-16 pb-12 lg:pt-20 lg:pb-16 overflow-hidden">
+      <section className="relative max-w-[1200px] mx-auto aspect-[3/4] sm:aspect-video">
         <Image
           src="/images/home/cover-image.png"
           alt="Hamaara Kitchen cover"
           fill
+          sizes="(max-width: 1200px) 100vw, 1200px"
           className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-[#1A0A00]/55" />
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-12 text-center">
           <div className="mb-6 flex justify-center">
             <Image
               src="/logo.png"
@@ -120,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="offerings" className="py-16 px-6" style={{ background: "#F2EDE4" }}>
+      <section id="offerings" className="py-16 px-6" style={{ background: "#FFFFFF" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-10">
@@ -234,7 +235,7 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-      <section className="py-20 px-6 text-center" style={{ background: "#F2EDE4" }}>
+      <section className="py-20 px-6 text-center" style={{ background: "#FFFFFF" }}>
         <ScrollReveal>
           <div className="max-w-2xl mx-auto">
             <h2

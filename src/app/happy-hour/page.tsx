@@ -163,7 +163,7 @@ export default function HappyHourPage() {
   const beverages  = MENU.find((s) => s.category.toLowerCase().includes("beverage"));
 
   return (
-    <div style={{ background: "#F2EDE4", minHeight: "100vh" }}>
+    <div style={{ background: "#FFFFFF", minHeight: "100vh" }}>
 
       {/* ── Hero ── */}
       <section

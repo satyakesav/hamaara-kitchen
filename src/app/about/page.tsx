@@ -60,7 +60,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Philosophy Intro ── */}
-      <section className="bg-[#F8F5EE] py-20 px-6">
+      <section className="bg-[#FFFFFF] py-20 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <div>
             <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">
@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Contact / Visit ── */}
-      <section className="bg-[#F8F5EE] py-20 px-6">
+      <section className="bg-[#FFFFFF] py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs text-[#C8A84B] tracking-widest uppercase mb-3">Come Find Us</p>
           <h2
