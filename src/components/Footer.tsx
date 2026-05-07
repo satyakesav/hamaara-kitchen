@@ -26,10 +26,10 @@ export default function Footer() {
               <p>4300 Great America Pkwy, Ste 156</p>
               <p>Santa Clara, CA 95054</p>
               <a
-                href="tel:+14084725923"
+                href="tel:+14085644083"
                 className="block hover:text-[#C8A84B] transition-colors"
               >
-                +1 (408) 472-5923
+                +1 (408) 564-4083
               </a>
               <a
                 href="mailto:hamaaraindiankitchensc@gmail.com"
