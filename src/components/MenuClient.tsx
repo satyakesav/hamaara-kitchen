@@ -7,6 +7,7 @@ import { useState, useMemo, useRef } from "react";
 export type MenuItem = {
   name: string;
   description?: string;
+  price?: string;
   isVeg: boolean;
 };
 
@@ -95,40 +96,55 @@ function VegDot({ isVeg }: { isVeg: boolean }) {
 function ItemRow({ item, query = "" }: { item: MenuItem; query?: string }) {
   return (
     <div
-      className="flex items-start gap-2 py-3"
+      className="flex items-start justify-between gap-2 py-3"
       style={{
         borderBottom: `1px dashed ${RULE_COLOR}`,
         fontFamily: "EB Garamond, Georgia, serif",
       }}
     >
-      <VegDot isVeg={item.isVeg} />
-      <div className="flex-1 min-w-0">
+      <div className="flex items-start gap-2 flex-1 min-w-0">
+        <VegDot isVeg={item.isVeg} />
+        <div className="flex-1 min-w-0">
+          <span
+            style={{
+              color: CHARCOAL_TEXT,
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              lineHeight: 1.4,
+            }}
+          >
+            {highlightText(item.name, query)}
+          </span>
+          {item.description && (
+            <>
+              <span style={{ color: MUTED_TEXT, margin: "0 4px" }}>—</span>
+              <span
+                style={{
+                  color: MUTED_TEXT,
+                  fontSize: "0.82rem",
+                  fontStyle: "italic",
+                  lineHeight: 1.4,
+                }}
+              >
+                {item.description}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+      {item.price && (
         <span
           style={{
             color: CHARCOAL_TEXT,
-            fontSize: "0.9rem",
-            fontWeight: 500,
-            lineHeight: 1.4,
+            fontSize: "0.85rem",
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+            flexShrink: 0,
           }}
         >
-          {highlightText(item.name, query)}
+          {item.price}
         </span>
-        {item.description && (
-          <>
-            <span style={{ color: MUTED_TEXT, margin: "0 4px" }}>—</span>
-            <span
-              style={{
-                color: MUTED_TEXT,
-                fontSize: "0.82rem",
-                fontStyle: "italic",
-                lineHeight: 1.4,
-              }}
-            >
-              {item.description}
-            </span>
-          </>
-        )}
-      </div>
+      )}
     </div>
   );
 }
