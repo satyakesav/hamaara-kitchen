@@ -34,7 +34,7 @@ type Props = {
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const ORDER_URL =
-  "https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212";
+  "https://order.spoton.com/so-hamaara-indian-kitchen/santa-clara-ca/6a187d9da86c99bc56e807fe";
 
 const GOLD = "#C8A84B";
 const SIDEBAR_BG = "#FFFFFF";

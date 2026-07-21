@@ -290,7 +290,7 @@ export default function HappyHourPage() {
           Can&apos;t make it? Order online
         </p>
         <a
-          href="https://order.spoton.com/so-balaji-mess-22212/santa-clara-ca/689e33ea11d9483dbf574212"
+          href="https://order.spoton.com/so-hamaara-indian-kitchen/santa-clara-ca/6a187d9da86c99bc56e807fe"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-2 px-8 py-3 bg-white text-[#C84800] font-black uppercase tracking-widest rounded-full text-sm hover:bg-amber-50 transition-colors"
