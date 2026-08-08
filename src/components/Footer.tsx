@@ -72,12 +72,12 @@ export default function Footer() {
             <div className="text-sm space-y-1.5">
               {[
                 { day: "Monday", hours: null },
-                { day: "Tuesday", hours: "8 AM – 10 PM" },
-                { day: "Wednesday", hours: "8 AM – 10 PM" },
-                { day: "Thursday", hours: "8 AM – 10 PM" },
-                { day: "Friday", hours: "8 AM – 10 PM" },
-                { day: "Saturday", hours: "8 AM – 10 PM" },
-                { day: "Sunday", hours: "8 AM – 10 PM" },
+                { day: "Tuesday", hours: "7 AM – 10 PM" },
+                { day: "Wednesday", hours: "7 AM – 10 PM" },
+                { day: "Thursday", hours: "7 AM – 10 PM" },
+                { day: "Friday", hours: "7 AM – 10 PM" },
+                { day: "Saturday", hours: "7 AM – 10 PM" },
+                { day: "Sunday", hours: "7 AM – 10 PM" },
               ].map(({ day, hours }) => (
                 <div key={day} className="flex items-baseline justify-between">
                   <span className="text-gray-400">{day}</span>

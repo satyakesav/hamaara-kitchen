@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -46,6 +47,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         <ScrollProgress />
+        <AnnouncementBanner />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
