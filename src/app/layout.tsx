@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Amrutham | South Indian Cuisine",
     description: "100% Pure Vegetarian. Authentic South Indian Taste. Made with Love & Care.",
-    url: "https://hamarakitchen.com",
+    url: "https://amrutham-foods.com",
     siteName: "Amrutham",
     type: "website",
   },
