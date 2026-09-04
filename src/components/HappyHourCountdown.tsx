@@ -2,9 +2,11 @@
 
 import { useSyncExternalStore } from "react";
 
-// Happy hour runs 3 PM – 6 PM daily
-const HAPPY_HOUR_START = 15; // 3 PM
-const HAPPY_HOUR_END = 18;   // 6 PM
+// Happy hour runs 3 PM – 5:30 PM daily
+const HAPPY_HOUR_START = 15;       // 3:00 PM
+const HAPPY_HOUR_END_H = 17;
+const HAPPY_HOUR_END_M = 30;
+const HAPPY_HOUR_END = HAPPY_HOUR_END_H + HAPPY_HOUR_END_M / 60; // 5.5 = 5:30 PM
 
 type CountdownState = { active: boolean; remaining: number };
 
@@ -16,7 +18,7 @@ function computeCountdownState(): CountdownState {
 
   const totalSecondsNow = h * 3600 + m * 60 + s;
   const startSeconds = HAPPY_HOUR_START * 3600;
-  const endSeconds = HAPPY_HOUR_END * 3600;
+  const endSeconds = HAPPY_HOUR_END_H * 3600 + HAPPY_HOUR_END_M * 60;
 
   if (totalSecondsNow >= startSeconds && totalSecondsNow < endSeconds) {
     return { active: true, remaining: endSeconds - totalSecondsNow };

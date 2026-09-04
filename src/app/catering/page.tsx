@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Catering | HAMAARA Indian Kitchen",
+  title: "Catering | Amrutham",
   description:
-    "HAMAARA Indian Kitchen offers catering for weddings, corporate lunches, dosa parties, and more. Contact us on WhatsApp to plan your event.",
+    "Amrutham offers catering for weddings, corporate lunches, dosa parties, and more. Contact us on WhatsApp to plan your event.",
 };
 
 const cateringServices = [
-  { label: "Traditional Banana Leaf Meals", icon: "🍃" },
+  { label: "Banana Leaf Bhojanam", icon: "🍃" },
   { label: "Weddings & Celebrations", icon: "💍" },
   { label: "No Onion & Garlic Sattvic Menu", icon: "🙏" },
-  { label: "Indian Fusion", icon: "🌶️" },
-  { label: "Corporate Lunches", icon: "🏢" },
-  { label: "Dosa Parties", icon: "🫓" },
-  { label: "Vegan / Vegetarian Options", icon: "🥦" },
-  { label: "Low-Carb / Keto Options", icon: "🥩" },
+  { label: "Live Dosa Station", icon: "🫓" },
+  { label: "Corporate Lunches & Events", icon: "🏢" },
+  { label: "Biryani & Pulav Platters", icon: "🍚" },
+  { label: "South Indian Tiffin Boxes", icon: "🥣" },
+  { label: "Festival & Pooja Catering", icon: "🪔" },
+  { label: "Vegan & Jain Options", icon: "🌿" },
+  { label: "Irani Chai & Beverage Service", icon: "☕" },
 ];
 
-const WHATSAPP_URL = "https://wa.me/14084725923";
+const WHATSAPP_URL = "https://wa.me/14085644083";
 
 export default function CateringPage() {
   return (
@@ -64,7 +66,7 @@ export default function CateringPage() {
               Customized for Every Occasion
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3">
               {cateringServices.map((s) => (
                 <div
                   key={s.label}
@@ -87,9 +89,9 @@ export default function CateringPage() {
               Talk to Us About Your Next Event
             </h3>
             <p className="text-[#5C3A20] text-sm leading-relaxed mb-8">
-              Our customized food options cater to all dietary needs and preferences — be it
-              a traditional no-onion-garlic sattvic menu, a fun fusion globally inspired
-              meal, corporate lunch boxes, or a dosa party. We can handle it all.
+              100% Pure Vegetarian catering tailored to your occasion — from traditional banana
+              leaf Bhojanam and live Dosa stations to corporate tiffin boxes and biryani platters.
+              Sattvic (no onion–garlic), vegan, and Jain menus available on request.
             </p>
 
             <div className="space-y-4">
@@ -106,13 +108,13 @@ export default function CateringPage() {
               </a>
 
               <a
-                href="tel:+14084725923"
+                href="tel:+14085644083"
                 className="flex items-center justify-center gap-3 w-full px-6 py-4 border border-[#3D1C0D]/40 hover:border-[#3D1C0D] text-[#3D1C0D] font-bold text-sm tracking-wider uppercase rounded-xl transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                +1 (408) 472-5923
+                +1 (408) 564-4083
               </a>
 
               <a

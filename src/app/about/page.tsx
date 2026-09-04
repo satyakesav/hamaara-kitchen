@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About | HAMAARA Indian Kitchen",
+  title: "About | Amrutham",
   description:
-    "Learn about HAMAARA Indian Kitchen — our philosophy, our food, and why we believe real food needs no shortcuts.",
+    "Learn about Amrutham — our philosophy, our food, and why we believe real food needs no shortcuts.",
 };
 
 const philosophyPoints = [
@@ -50,7 +50,7 @@ export default function AboutPage() {
           className="text-4xl sm:text-5xl font-bold text-[#3D1C0D] mb-4"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
-          About HAMAARA Kitchen
+          About Amrutham
         </h1>
         <div className="flex items-center justify-center gap-3 mt-4">
           <div className="h-px w-12 bg-[#C8A84B]/50" />
@@ -70,14 +70,13 @@ export default function AboutPage() {
               className="text-3xl sm:text-4xl font-bold text-[#1E1829] mb-6 leading-tight"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
-              One India, Many Cultures, One Table
+              Pure Vegetarian. Traditional. Made with Love.
             </h2>
             <p className="text-gray-600 leading-relaxed mb-5">
-              At HAMAARA Indian Kitchen, we believe that good food is real food. India is a
-              land of incredible diversity — dozens of languages, hundreds of cultures, and
-              thousands of culinary traditions. Our name, <em>HAMAARA</em> (meaning
-              &ldquo;ours&rdquo; in Hindi), reflects our mission: to bring all of that to
-              one table.
+              At Amrutham, we believe that good food is real food. Our name, <em>Amrutham</em>
+              (meaning &ldquo;nectar&rdquo; in Sanskrit), reflects our commitment to food that
+              nourishes the body and soul — 100% pure vegetarian, authentic South Indian cuisine
+              crafted with traditional recipes and the finest fresh ingredients.
             </p>
             <p className="text-gray-600 leading-relaxed mb-5">
               We take pride in using fresh, honest ingredients that make food taste
@@ -126,7 +125,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-xs text-[#8B4A00] tracking-widest uppercase mb-2">
-              The HAMAARA Way
+              The Amrutham Way
             </p>
             <h2
               className="text-3xl sm:text-4xl font-bold text-[#3D1C0D]"

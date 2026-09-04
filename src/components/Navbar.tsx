@@ -51,8 +51,8 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="relative w-14 h-14">
               <Image
-                src="/logo.png"
-                alt="HAMAARA Indian Kitchen"
+                src="/amrutham-logo.jpeg"
+                alt="Amrutham South Indian Cuisine"
                 fill
                 sizes="56px"
                 className="object-contain"
@@ -63,10 +63,10 @@ export default function Navbar() {
             </div>
             <div className="leading-tight text-center">
               <span className="block text-[#3D1C0D] font-bold text-lg tracking-wide uppercase">
-                HAMAARA
+                AMRUTHAM
               </span>
               <span className="block text-xs text-[#5C3A20] tracking-widest uppercase">
-                Indian Kitchen
+                South Indian Cuisine
               </span>
             </div>
           </Link>

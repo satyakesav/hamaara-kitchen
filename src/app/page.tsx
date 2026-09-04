@@ -5,39 +5,33 @@ import ScrollReveal from "@/components/ScrollReveal";
 const ORDER_URL =
   "https://order.spoton.com/so-hamaara-indian-kitchen/santa-clara-ca/6a187d9da86c99bc56e807fe";
 
-const menuCuisineImages = [
-  { label: "South", src: "/images/home/offerings/menu/south.jpg" },
-  { label: "North", src: "/images/home/offerings/menu/north.jpg" },
-  { label: "East", src: "/images/home/offerings/menu/east.jpg" },
-  { label: "West", src: "/images/home/offerings/menu/west.jpg" },
-];
-
-const menuCoverImage: string | null = "/images/home/offerings/menu/cover.png";
-const happyHourCoverImage: string | null = "/images/home/offerings/happy-hour/cover.png";
-const cateringCoverImage: string | null = "/images/home/offerings/catering/cover.jpg";
+const menuCoverImage: string | null = "/images/home/offerings/menu/amrutham-banner-2.jpeg";
+const happyHourCoverImage: string | null = "/images/home/offerings/happy-hour/amrutham-happy-hour.jpeg";
+const cateringCoverImage: string | null = "/images/home/offerings/catering/catering-thali.jpg";
 
 const offerings = [
   {
     title: "Full Menu",
     description:
-      "Explore South, North, East and West Indian flavors in one place with homestyle cooking and authentic ingredients.",
+      "100% Pure Vegetarian South Indian cuisine — tiffins, dosas, biryanis, curries, and more. Fresh ingredients, authentic taste, made with love.",
     href: "/menu",
     cta: "Explore Menu",
     imageSrc: menuCoverImage,
-    imageAlt: "Pan-Indian dishes from different regions",
+    imageAlt: "Amrutham South Indian cuisine spread",
     placeholderLabel: "Menu photo",
-    cuisines: ["South", "North", "East", "West"],
+    cuisines: [],
   },
   {
     title: "Happy Hour",
     description:
-      "Evening bites and beverage specials crafted for a relaxed, social dining experience.",
+      "Vegetarian Happy Hour every day, 3:00 PM – 5:30 PM. Weekday combos at $6.99, Irani Chai $2.99, Indian Coffee $3.49. Dine-in only.",
     href: "/happy-hour",
     cta: "See Happy Hour",
     imageSrc: happyHourCoverImage,
-    imageAlt: "Happy Hour drinks and snacks",
-    placeholderLabel: "Add happy-hour cover image",
+    imageAlt: "Amrutham Vegetarian Happy Hour",
+    placeholderLabel: "Happy Hour cover image",
     cuisines: [],
+    imageContain: true,
   },
   {
     title: "Catering",
@@ -49,48 +43,59 @@ const offerings = [
     imageAlt: "Catering setup for events",
     placeholderLabel: "Add catering cover image",
     cuisines: [],
+    imageContain: true,
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="relative max-w-[1200px] mx-auto aspect-[3/4] sm:aspect-video">
+      {/* Hero Banner */}
+      <section className="relative max-w-[1200px] mx-auto aspect-[3/1] overflow-hidden">
         <Image
-          src="/images/home/cover-image.png"
-          alt="Hamaara Kitchen cover"
+          src="/images/home/amrutham-banner.jpeg"
+          alt="Amrutham South Indian Cuisine banner"
           fill
           sizes="(max-width: 1200px) 100vw, 1200px"
-          className="object-cover object-center"
+          className="object-cover object-top"
           priority
         />
-        <div className="absolute inset-0 bg-[#1A0A00]/55" />
+      </section>
 
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 py-12 text-center">
-          <div className="mb-6 flex justify-center">
-            <Image
-              src="/logo.png"
-              alt="HAMAARA Indian Kitchen"
-              width={140}
-              height={140}
-              className="drop-shadow-xl"
-              priority
-            />
-          </div>
-
-          <p className="text-xs tracking-[0.2em] uppercase text-[#F5C97A] mb-3">
-            HAMAARA Kitchen
-          </p>
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#FDF9F4] mb-4 leading-tight"
-            style={{ fontFamily: "var(--font-playfair), serif" }}
+      {/* Hero Text */}
+      <section
+        className="py-12 px-6 text-center"
+        style={{ background: "linear-gradient(180deg, #FAF6F0 0%, #F5EEE4 100%)" }}
+      >
+        <p className="text-xs tracking-[0.25em] uppercase mb-3" style={{ color: "#C8A84B" }}>
+          100% Pure Vegetarian • Santa Clara, CA
+        </p>
+        <h1
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#3D1C0D] mb-4 leading-tight"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
+        >
+          Authentic South Indian Flavors
+        </h1>
+        <p className="text-[#5C3A20] text-lg max-w-2xl mx-auto mb-8">
+          Fresh ingredients, traditional recipes. Catering available for weddings, festivals & all occasions — Live Dosa Station available.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={ORDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200 shadow"
+            style={{ background: "#C8A84B", color: "#1E1829" }}
           >
-            Discover Everything We Offer
-          </h1>
-          <p className="text-[#EDE0CC] text-lg max-w-2xl mx-auto">
-            From a Pan-Indian menu to Happy Hour and event catering, explore
-            the complete HAMAARA experience in one place.
-          </p>
+            Order Online
+          </a>
+          <Link
+            href="/menu"
+            className="px-8 py-4 border-2 font-bold text-sm tracking-widest uppercase rounded transition-colors duration-200"
+            style={{ borderColor: "#3D1C0D", color: "#3D1C0D" }}
+          >
+            Explore Menu
+          </Link>
         </div>
       </section>
 
@@ -99,14 +104,13 @@ export default function Home() {
           {[...Array(2)].map((_, pass) => (
             <span key={pass} className="flex items-center gap-0">
               {[
-                "Pan-Indian Menu",
-                "South",
-                "North",
-                "East",
-                "West",
-                "Happy Hour",
-                "Catering",
+                "Pure Vegetarian",
+                "South Indian Cuisine",
+                "Live Dosa Station",
+                "Catering Available",
                 "Santa Clara, CA",
+                "Fresh Ingredients",
+                "Made With Love",
               ].map((word) => (
                 <span
                   key={word}
@@ -150,7 +154,7 @@ export default function Home() {
                         src={offering.imageSrc}
                         alt={offering.imageAlt}
                         fill
-                        className="object-cover"
+                        className={(offering as {imageContain?: boolean}).imageContain ? "object-contain" : "object-cover"}
                         sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
                         priority={idx === 0}
                       />
@@ -185,25 +189,6 @@ export default function Home() {
                       </div>
                     )}
 
-                    {offering.cuisines.length > 0 && (
-                      <div className="mt-4 grid grid-cols-4 gap-2">
-                        {menuCuisineImages.map((item) => (
-                          <div
-                            key={item.label}
-                            className="relative aspect-square rounded-md overflow-hidden bg-[#E5DACA]"
-                          >
-                            <Image
-                              src={item.src}
-                              alt={`${item.label} Indian cuisine`}
-                              fill
-                              className="object-cover"
-                              sizes="80px"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
                     <div className="mt-6 pt-2">
                       <Link
                         href={offering.href}
@@ -230,7 +215,7 @@ export default function Home() {
             celebrations of every size.&rdquo;
           </blockquote>
           <p className="mt-5 text-sm tracking-widest uppercase" style={{ color: "#C84800" }}>
-            HAMAARA Kitchen • Santa Clara
+            Amrutham • Santa Clara
           </p>
         </ScrollReveal>
       </section>

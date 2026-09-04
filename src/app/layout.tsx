@@ -19,15 +19,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HAMAARA Indian Kitchen | Santa Clara, CA",
+  title: "Amrutham | South Indian Cuisine | Santa Clara, CA",
   description:
-    "A culinary journey across India, right here in Santa Clara. One India, Many Cultures, One Table. Order online or visit us at 4300 Great America Pkwy.",
-  keywords: ["Indian restaurant", "North Indian food", "South Indian food", "Santa Clara", "biryani", "dosa", "HAMAARA Kitchen"],
+    "100% Pure Vegetarian South Indian cuisine in Santa Clara. Authentic tiffins, dosas, biryanis, curries & more. Catering available for all occasions.",
+  keywords: ["Indian restaurant", "South Indian food", "pure vegetarian", "Santa Clara", "biryani", "dosa", "Amrutham", "tiffin"],
   openGraph: {
-    title: "HAMAARA Indian Kitchen",
-    description: "One India, Many Cultures, One Table.",
+    title: "Amrutham | South Indian Cuisine",
+    description: "100% Pure Vegetarian. Authentic South Indian Taste. Made with Love & Care.",
     url: "https://hamarakitchen.com",
-    siteName: "HAMAARA Indian Kitchen",
+    siteName: "Amrutham",
     type: "website",
   },
 };

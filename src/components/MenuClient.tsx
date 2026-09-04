@@ -469,7 +469,7 @@ export default function MenuClient({ categories }: Props) {
               lineHeight: 1.2,
             }}
           >
-            HAMAARA
+            AMRUTHAM
           </p>
           <p
             style={{
@@ -480,7 +480,7 @@ export default function MenuClient({ categories }: Props) {
               marginTop: 2,
             }}
           >
-            Indian Kitchen
+            South Indian Cuisine
           </p>
         </div>
 

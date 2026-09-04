@@ -13,14 +13,14 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <span className="block text-[#C8A84B] font-bold text-2xl tracking-wide">
-                HAMAARA
+                AMRUTHAM
               </span>
               <span className="block text-xs text-gray-400 tracking-widest uppercase">
-                Indian Kitchen
+                South Indian Cuisine
               </span>
             </div>
             <p className="text-sm text-gray-400 mb-4 leading-relaxed italic">
-              &ldquo;One India, Many Cultures, One Table&rdquo;
+              &ldquo;100% Pure Vegetarian. Authentic South Indian Taste.&rdquo;
             </p>
             <div className="space-y-1.5 text-sm text-gray-400">
               <p>4300 Great America Pkwy, Ste 156</p>
@@ -124,7 +124,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-600">
-          <p>© {new Date().getFullYear()} HAMAARA Indian Kitchen. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Amrutham. All rights reserved.</p>
           <p>Santa Clara, CA</p>
         </div>
       </div>
